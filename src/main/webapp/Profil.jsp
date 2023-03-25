@@ -32,14 +32,13 @@
 					<div class="author_image">
 						<div class="image_inner">			
 						</div>
-						<img src="img/2.jpg">
+						<img src="${requestScope.photo}">
 					</div>
 					<div class="details_wrap">
 						<div class="details_inner">
-							<h3 class="name">Zhibo XIE</h3>
+							<h3 class="name">${requestScope.prenom} ${requestScope.nom}</h3>
 							<div class="short_info">
-								<a href="#">zhibo.xie@ut-capitole.fr</a>
-								<p>06 73 57 67 32</p>
+								<a href="#">${requestScope.email}</a>
 							</div>
 							<div class="resumify_tm_button" data-position="center">
 								<a href=""> Retour </a>
@@ -63,12 +62,12 @@
 									</div>
 									<div class="times_list">
 										<ul>
-											<li><p><span>Nom : </span>Zhibo</p></li>
-											<li><p><span>Prenom : </span>XIE</p></li>
-											<li><p><span>sexe : </span>Monsieur</p></li>
-											<li><p><span>Date Naissance : </span>04/04/1998</p></li>																
-											<li><p><span>Email :</span>zhibo.xie@ut-capitole.fr</p></li>
-											<li><p><span>Email supplement : </span>xiezhibo0@gmail.com</p></li>							
+											<li><p><span>Nom : </span>${requestScope.nom}</p></li>
+											<li><p><span>Prenom : </span>${requestScope.prenom}</p></li>
+											<li><p><span>sexe : </span>${requestScope.sexe}</p></li>
+											<li><p><span>Date Naissance : </span>${requestScope.dateNaissance}</p></li>																
+											<li><p><span>Email :</span>${requestScope.email}</p></li>
+											<li><p><span>Email supplement : </span>${requestScope.mailSupplement}</p></li>							
 										</ul>
 											</br>
 											<form action="UploadServlet" method="post" enctype="multipart/form-data">	

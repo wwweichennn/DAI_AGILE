@@ -34,7 +34,11 @@ public class centrale extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+			
+		javax.servlet.http.HttpSession session = request.getSession();
+		session.setAttribute("email", email);
 
+		
 		if(email.equals("")&& password.equals("")) {
 			request.setAttribute("email_error", "Veillez entrer l'addresse email");
 			request.setAttribute("password_error", "Veillez entrer un mot de passe");

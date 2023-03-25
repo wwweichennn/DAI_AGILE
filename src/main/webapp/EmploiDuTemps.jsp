@@ -59,7 +59,7 @@
 			<div class="compte">
 				<li><a href="#">Mon Compte</a>
 					<ul>
-						<li><a href="">Mes informations</a></li>
+						<li><a href="CtrlProfil">Mes informations</a></li>
 						<li>Déconnextion</li>
 					</ul>
 			</div>

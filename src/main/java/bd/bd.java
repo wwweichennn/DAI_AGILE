@@ -12,7 +12,6 @@ import javax.servlet.http.Part;
 
 import org.hibernate.engine.jdbc.BinaryStream;
 
-
 import metier.Users;
 
 
@@ -81,6 +80,30 @@ public class bd {
 	    cx.close();  
 	return photo;
 	}
+	public static Users AfficherProfil(String email) throws Exception {
+		
+		if(bd.cx==null) 
+		bd.connection();
+		
+		String sql="SELECT * FROM users Where identifiant=?";
+		Users user=null;
+		
+		try(PreparedStatement st = cx.prepareStatement(sql)) 
+		{
+			st.setString(1, email);
+			try(ResultSet rs=st.executeQuery();){
+				while(rs.next()) {
+					user = new Users(email,null,rs.getString("nom"),rs.getString("prenom"),rs.getString("sexe"),rs.getDate("dateNaissance"),rs.getString("mailSupplement"),rs.getString("photo"));
+				}
+			}
+		}
+		catch(SQLException sqle) 
+		{
+			throw new Exception("bd.AfficherProfil() - Erreur a l'affiche du profil");		
+		}	
+		return user;	
+	}
+	
 	
 	
 

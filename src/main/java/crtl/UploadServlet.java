@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import bd.bd;
@@ -65,14 +66,15 @@ public class UploadServlet extends HttpServlet {
         Files.copy(inputStream, Paths.get(uploadFilePath + File.separator + fileName),
                 StandardCopyOption.REPLACE_EXISTING);
         
-        Users u1=new Users("weichen@gmail.com","1234","zzz","rrr","Mme",null,"aaa@qqq","aaaaaaaaaa");
+        HttpSession session = request.getSession();
+        Users u1=(Users) session.getAttribute("user");
 
         try {
 			bd.uploadPhoto(u1, filePath);
 			String i="";
 			i="Photo déposée avec succès !";
 			request.setAttribute("msg_photo", i);
-			request.getRequestDispatcher("res").forward(request, response);	
+			request.getRequestDispatcher("index").forward(request, response);	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
