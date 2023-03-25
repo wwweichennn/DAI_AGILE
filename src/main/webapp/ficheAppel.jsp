@@ -11,6 +11,31 @@
 <body>
 <div class="element">
 <br/>
+<!-- menu -->
+	<div class="menu">
+		<ul>
+			<li><img src="img/logo-ut1.png" class="logo-ut1" /></li>
+			<div class="accueil">
+				<li><a href="webapp.EmploiDuTemps">Accueil</a>
+			</div>
+			</li>
+			<li class="cours"><a href="#">Mes cours</a>
+				<ul>
+					<li><a href="CoursAnnee.jsp">2022-2023</a></li>
+					<li><a href="">2021-2022</a></li>
+				</ul></li>
+
+			<div class="compte">
+				<li><a href="#">Mon Compte</a>
+					<ul>
+						<li><a href="">Mes informations</a></li>
+						<li>Déconnextion</li>
+					</ul>
+			</div>
+			</li>
+		</ul>
+	</div>
+	<!-- /menu -->
 <h1 class="titre">Fiche d'appel pour le cours DAI</h1>
 <ul class="appel">
   <li class="appel-item">

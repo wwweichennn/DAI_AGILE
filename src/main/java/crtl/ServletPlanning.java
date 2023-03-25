@@ -39,12 +39,6 @@ public class ServletPlanning extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
-		}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*----- Lecture de la requête en UTF-8 -----*/
 		request.setCharacterEncoding("UTF-8");
 
@@ -61,22 +55,28 @@ public class ServletPlanning extends HttpServlet {
 			String id = request.getParameter("id");
 
 			try {
-				ArrayList<Seance> lSeances = bd2.consulterSeance(id);
+				ArrayList<Seance> lSeances = bd2.consulterSeance(id);		
 				for (Seance s : lSeances) {
-					out.println("<cours><![CDATA[" + s.getCours().getNomCours() + "]]></cours>");
-					out.println("<salle>" +  s.getSalleS() + "</salle>");
-					out.println("<date>" + s.getDateS() + "</date>");
-					out.println("<duree>" + s.getDureeS() + "</duree>");
-					out.println("<hdebut>" + s.getHeureDebut() + "</hdebut>");
-				}
+									out.println("<cours>" + s.getCours().getNomCours() + "</cours>");
+									out.println("<salle>"+s.getSalleS()+"</salle>");
+									out.println("<date>" + s.getDateS() + "</date>");
+									out.println("<duree>" + s.getDureeS() + "</duree>");
+									out.println("<hdebut>" + s.getHeureDebut() + "</hdebut>");
+								}				
 				}
 			catch (Exception ex)
 				{
-				out.println("<citation>Erreur - " + ex.getMessage() + "</citation>");
+				out.println("<salle>Erreur - " + ex.getMessage() + "</salle>");
 				}
 
 			out.println("</liste_seance>");
 			}
 	}
+		
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	}
 }

@@ -134,7 +134,7 @@ public class bd2 {
 			try (ResultSet rs = st.executeQuery()) {
 				/*----- Lecture du contenu du ResultSet -----*/
 				while (rs.next()) {
-				Seance newseance=new Seance(rs.getString("SalleSeance"),rs.getDate("DateSeance"),rs.getInt("DureeSeance"),rs.getTime("HeureDebut"),rs.getString("StatutFicheAppel"),new Users(),new Cours());
+				Seance newseance=new Seance(rs.getString("SalleSeance"),rs.getDate("DateSeance"),rs.getInt("DureeSeance"),rs.getTime("HeureDebut"),rs.getString("StatutFicheAppel"),new Users(),new Cours(consulterCoursNom(rs.getInt("CodeC"))));
 				newseance.setIdSeance(consulterSeanceID(code));
 				seance.add(newseance);
 				}
@@ -166,11 +166,36 @@ public class bd2 {
 		}
 		return 0;
 	}
+	public static String consulterCoursNom(int code) throws Exception {
+		/*----- Création éventuelle de la connexion à la base de données -----*/
+		if (bd2.cx == null) {
+			bd2.connection();
+		}
+	
+		/*----- Requête SQL -----*/
+		String sql = "SELECT nomCours FROM Cours WHERE Cours.CodeC = ?";
+		
+		
+		/*----- Ouverture de l'espace de requête -----*/
+		try (PreparedStatement st = bd2.cx.prepareStatement(sql)) {
+			st.setInt(1, code);
+			/*----- Exécution de la requête -----*/
+			try (ResultSet rs = st.executeQuery()) {
+				/*----- Lecture du contenu du ResultSet -----*/
+				rs.next();
+				return rs.getString("nomCours");
+			}
+		} catch (SQLException ex) {
+		}
+		return "";
+	}
+	
 	public static void main(String[] args) throws Exception
 	{
 	for(Seance s:consulterSeance("1")) {
 		System.out.println(s);
 	}
+	
 
 	}
 

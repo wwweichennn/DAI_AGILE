@@ -27,11 +27,16 @@
 			var dayOfWeek = new Array("Dimanche", "Lundi", "Mardi", "Mercredi",
 					"Jeudi", "Vendredi", "Samedi")[date.getDay()];
 			document.getElementById("date" + i).innerHTML = dayOfWeek ;
-			document.getElementById("jour" + i).innerHTML =date.toLocaleDateString();
+			document.getElementById("jour" + i).innerHTML = date.toLocaleDateString();
+			document.getElementById("datecheck" + i).innerHTML = date;
 		}
 	}
 </script>
-
+<style>
+    .invisible {
+  display: none;
+}
+  </style>
 </head>
 <body>
 	<%
@@ -66,7 +71,7 @@
 		<div class="div1">
 
 			<h1>Bienvenue de nouveau, ${requestScope.nom}</h1>
-			<h2 id="ide">${requestScope.id}</h2>
+			<p  class="invisible" id="idenseignant">${requestScope.id}</p>
 
 			<h2>Mes Emploi du Temps</h2>
 			<h3>Semestre :<span id="dee"></span> - <span id="aa"></span></h3>
@@ -101,12 +106,24 @@
 					<td id="jour6"><div></div></td>
 
 </tr>
+<tr class="invisible">
+<td></td>
+
+					<td id="datecheck0"><div></div></td>
+					<td id="datecheck1"><div></div></td>
+					<td id="datecheck2"><div></div></td>
+					<td id="datecheck3"><div></div></td>
+					<td id="datecheck4"><div></div></td>
+					<td id="datecheck5"><div></div></td>
+					<td id="datecheck6"><div></div></td>
+
+</tr>
 					<%--boucle de seance --%>
 					<tr>
 						<td class="heure" id="h1">8:00-9:30</td>
 						<%
 						for (int i = 0; i < 7; i++) {
-							out.println("<td class=course id='d" + i + "'></td>");
+							out.println("<td class=course id='1d" + i + "'></td>");
 						}
 						%>
 
@@ -115,7 +132,7 @@
 						<td class="heure" id="h2">9:30-11:00</td>
 						<%
 						for (int i = 0; i < 7; i++) {
-							out.println("<td class=course id='d" + i + "'></td>");
+							out.println("<td class=course id='2d" + i + "'></td>");
 						}
 						%>
 					</tr>
@@ -123,12 +140,12 @@
 						<td class="heure" id="h3">11:00-12:30</td>
 						<%
 						for (int i = 0; i < 7; i++) {
-							out.println("<td class=course id='d" + i + "'></td>");
+							out.println("<td class=course id='3d" + i + "'></td>");
 						}
 						%>
 					</tr>
 					<tr>
-						<td class="heure" id="h4">12:30-14:00</td>
+						<td class="heure">12:30-14:00</td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -138,34 +155,34 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td class="heure" id="h5">14:00-15:30</td>
+						<td class="heure" id="h4">14:00-15:30</td>
 						<%
 						for (int i = 0; i < 7; i++) {
-							out.println("<td class=course id='d" + i + "'></td>");
+							out.println("<td class=course id='4d" + i + "'></td>");
 						}
 						%>
 					</tr>
 					<tr>
-						<td class="heure" id="h6">15:30-17:00</td>
+						<td class="heure" id="h5">15:30-17:00</td>
 						<%
 						for (int i = 0; i < 7; i++) {
-							out.println("<td class=course id='d" + i + "'></td>");
+							out.println("<td class=course id='5d" + i + "'></td>");
 						}
 						%>
 					</tr>
 					<tr>
-						<td class="heure" id="h7">17:00-18:30</td>
+						<td class="heure" id="h6">17:00-18:30</td>
 						<%
 						for (int i = 0; i < 7; i++) {
-							out.println("<td class=course id='d" + i + "'></td>");
+							out.println("<td class=course id='6d" + i + "'></td>");
 						}
 						%>
 					</tr>
 					<tr>
-						<td class="heure" id="h8">18:30-20:00</td>
+						<td class="heure" id="h7">18:30-20:00</td>
 						<%
 						for (int i = 0; i < 7; i++) {
-							out.println("<td class=course id='d" + i + "'></td>");
+							out.println("<td class=course id='7d" + i + "'></td>");
 						}
 						%>
 						
