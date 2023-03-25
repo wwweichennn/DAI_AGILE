@@ -72,11 +72,11 @@
 	<div class="parent">
 		<div class="div1">
 
-			<h1>Bienvenue de nouveau, ${requestScope.nom}</h1>
+			<h1 >Bienvenue de nouveau, ${requestScope.nom}</h1>
 			<p  class="invisible" id="idenseignant">${requestScope.id}</p>
 
 			<h2>Mes Emploi du Temps</h2>
-			<h3>Semestre :<span id="dee"></span> - <span id="aa"></span></h3>
+			<h3 style="text-align:center;">Semestre :<span id="dee"></span> - <span id="aa"></span></h3>
 
 		</div>
 		<div class="div2">
