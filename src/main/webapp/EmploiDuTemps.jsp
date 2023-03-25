@@ -30,6 +30,8 @@
 			document.getElementById("jour" + i).innerHTML = date.toLocaleDateString();
 			document.getElementById("datecheck" + i).innerHTML = date;
 		}
+		document.getElementById("dee").innerHTML = document.getElementById("jour0").innerHTML;
+		document.getElementById("aa").innerHTML = document.getElementById("jour6").innerHTML;
 	}
 </script>
 <style>

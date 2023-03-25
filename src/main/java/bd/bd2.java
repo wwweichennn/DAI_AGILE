@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import dao.SeanceDonner;
@@ -126,7 +127,7 @@ public class bd2 {
 		/*----- Requête SQL -----*/
 		String sql = "SELECT * FROM Seance WHERE Seance.CodeU = ?";
 		ArrayList<Seance> seance = new ArrayList<>();
-		
+	
 		/*----- Ouverture de l'espace de requête -----*/
 		try (PreparedStatement st = bd2.cx.prepareStatement(sql)) {
 			st.setString(1, code);
@@ -135,7 +136,8 @@ public class bd2 {
 				/*----- Lecture du contenu du ResultSet -----*/
 				while (rs.next()) {
 				Seance newseance=new Seance(rs.getString("SalleSeance"),rs.getDate("DateSeance"),rs.getInt("DureeSeance"),rs.getTime("HeureDebut"),rs.getString("StatutFicheAppel"),new Users(),new Cours(consulterCoursNom(rs.getInt("CodeC"))));
-				newseance.setIdSeance(consulterSeanceID(code));
+				newseance.setIdSeance(consulterSeanceID(code,rs.getInt("CodeC")));
+				
 				seance.add(newseance);
 				}
 			}
@@ -143,19 +145,20 @@ public class bd2 {
 		}
 		return seance;
 	}
-	public static int consulterSeanceID(String code) throws Exception {
+	public static int consulterSeanceID(String code,int codeC) throws Exception {
 		/*----- Création éventuelle de la connexion à la base de données -----*/
 		if (bd2.cx == null) {
 			bd2.connection();
 		}
 	
 		/*----- Requête SQL -----*/
-		String sql = "SELECT CodeSeance FROM Seance WHERE Seance.CodeU = ?";
+		String sql = "SELECT CodeSeance FROM Seance WHERE Seance.CodeU = ? AND Seance.CodeC= ?";
 		
 		
 		/*----- Ouverture de l'espace de requête -----*/
 		try (PreparedStatement st = bd2.cx.prepareStatement(sql)) {
 			st.setString(1, code);
+			st.setInt(2, codeC);
 			/*----- Exécution de la requête -----*/
 			try (ResultSet rs = st.executeQuery()) {
 				/*----- Lecture du contenu du ResultSet -----*/
@@ -192,6 +195,7 @@ public class bd2 {
 	
 	public static void main(String[] args) throws Exception
 	{
+
 	for(Seance s:consulterSeance("1")) {
 		System.out.println(s);
 	}

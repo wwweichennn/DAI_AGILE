@@ -57,6 +57,7 @@ public class ServletPlanning extends HttpServlet {
 			try {
 				ArrayList<Seance> lSeances = bd2.consulterSeance(id);		
 				for (Seance s : lSeances) {
+									out.println("<id>" + s.getIdSeance() + "</id>");
 									out.println("<cours>" + s.getCours().getNomCours() + "</cours>");
 									out.println("<salle>"+s.getSalleS()+"</salle>");
 									out.println("<date>" + s.getDateS() + "</date>");

@@ -16,6 +16,7 @@ function afficher(){
 		// Si la requête http s'est bien passée.
 		if (xhr.status === 200)
 			{
+			var l_ids = xhr.responseXML.getElementsByTagName("id");
 			var l_cours = xhr.responseXML.getElementsByTagName("cours");
 			var l_salles = xhr.responseXML.getElementsByTagName("salle");
 			var l_dates = xhr.responseXML.getElementsByTagName("date");
@@ -32,157 +33,165 @@ function afficher(){
 						switch (l_hdebuts[j].firstChild.nodeValue) {
   							case "08:00:00":
 								  if(l_durees[j].firstChild.nodeValue/90==1){
-									 document.getElementById("1d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 document.getElementById("1d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("1d"+i).style.backgroundColor = "orange";
 									 }
 								  else if(l_durees[j].firstChild.nodeValue/90==2){
-									 document.getElementById("1d"+i).rowSpan = 2;
-									 let cell =document.getElementById("2d"+i);
-									 let row = cell.parentNode;
-									 row.removeChild(cell);
-									 document.getElementById("1d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";}
+									 document.getElementById("1d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("2d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("2d"+i).style.backgroundColor = "orange";
+									 document.getElementById("1d"+i).style.backgroundColor = "orange";
+									 }
 								  else if(l_durees[j].firstChild.nodeValue/90==3){
-									 document.getElementById("1d"+i).rowSpan = 3;
-									 let cell =document.getElementById("2d"+i);
-									 let cell2 =document.getElementById("3d"+i);
-									 let row = cell.parentNode;
-									 let row2 = cell.parentNode;
-									 row.removeChild(cell);
-									 row2.removeChild(cell2);
-									 document.getElementById("1d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 document.getElementById("1d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("1d"+i).style.backgroundColor = "orange";
+									 document.getElementById("2d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("2d"+i).style.backgroundColor = "orange";
+									 document.getElementById("3d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("3d"+i).style.backgroundColor = "orange";
 									}
    								break;
    							case "09:30:00":
   								  if(l_durees[j].firstChild.nodeValue/90==1){
-									 document.getElementById("2d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 document.getElementById("2d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("2d"+i).style.backgroundColor = "orange";
 									 }
 								  else if(l_durees[j].firstChild.nodeValue/90==2){
-									 document.getElementById("2d"+i).rowSpan = 2;
-									 let cell =document.getElementById("3d"+i);
-									 let row = cell.parentNode;
-									 row.removeChild(cell);
-									 document.getElementById("2d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									
+									 document.getElementById("2d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("2d"+i).style.backgroundColor = "orange";
+									 document.getElementById("3d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("3d"+i).style.backgroundColor = "orange";
 									}
 								  else if(l_durees[j].firstChild.nodeValue/90==3){
-									 document.getElementById("2d"+i).rowSpan = 3;
-									 let cell =document.getElementById("3d"+i);
-									 let cell2 =document.getElementById("4d"+i);
-									 let row = cell.parentNode;
-									 let row2 = cell.parentNode;
-									 row.removeChild(cell);
-									 row2.removeChild(cell2);
-									 document.getElementById("2d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 
+									 document.getElementById("2d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("2d"+i).style.backgroundColor = "orange";
+									 document.getElementById("3d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("3d"+i).style.backgroundColor = "orange";
+									 document.getElementById("4d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("4d"+i).style.backgroundColor = "orange";
 									}
   								break;
   							case "11:00:00":
   								  if(l_durees[j].firstChild.nodeValue/90==1){
-									 document.getElementById("3d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 document.getElementById("3d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("3d"+i).style.backgroundColor = "orange";
 									 }
 								  else if(l_durees[j].firstChild.nodeValue/90==2){
-									 document.getElementById("3d"+i).rowSpan = 2;
-									 let cell =document.getElementById("4d"+i);
-									 let row = cell.parentNode;
-									 row.removeChild(cell);
-									 document.getElementById("3d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 
+									 document.getElementById("3d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("3d"+i).style.backgroundColor = "orange";
+									 document.getElementById("4d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("4d"+i).style.backgroundColor = "orange";
 									}
 								  else if(l_durees[j].firstChild.nodeValue/90==3){
-									 document.getElementById("3d"+i).rowSpan = 3;
-									 let cell =document.getElementById("4d"+i);
-									 let cell2 =document.getElementById("5d"+i);
-									 let row = cell.parentNode;
-									 let row2 = cell.parentNode;
-									 row.removeChild(cell);
-									 row2.removeChild(cell2);
-									 document.getElementById("3d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									
+									 document.getElementById("3d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("3d"+i).style.backgroundColor = "orange";
+									 document.getElementById("4d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("4d"+i).style.backgroundColor = "orange";
+									 document.getElementById("5d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("5d"+i).style.backgroundColor = "orange";
 									}
   								break;
   							case "14:00:00":
   								  if(l_durees[j].firstChild.nodeValue/90==1){
-									 document.getElementById("4d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 document.getElementById("4d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("4d"+i).style.backgroundColor = "orange";
 									 }
 								  else if(l_durees[j].firstChild.nodeValue/90==2){
-									 document.getElementById("4d"+i).rowSpan = 2;
-									 let cell =document.getElementById("5d"+i);
-									 let row = cell.parentNode;
-									 row.removeChild(cell);
-									 document.getElementById("4d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 
+									 document.getElementById("4d"+i).style.backgroundColor = "orange";
+									 
+									 document.getElementById("4d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("5d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("5d"+i).style.backgroundColor = "orange";
 									}
 								  else if(l_durees[j].firstChild.nodeValue/90==3){
-									 document.getElementById("4d"+i).rowSpan = 3;
-									 let cell =document.getElementById("5d"+i);
-									 let cell2 =document.getElementById("6d"+i);
-									 let row = cell.parentNode;
-									 let row2 = cell.parentNode;
-									 row.removeChild(cell);
-									 row2.removeChild(cell2);
-									 document.getElementById("4d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									
+									 document.getElementById("4d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("4d"+i).style.backgroundColor = "orange";
+									 document.getElementById("5d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("5d"+i).style.backgroundColor = "orange";
+									 document.getElementById("6d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("6d"+i).style.backgroundColor = "orange";
 									}
    								break;
    							case "15:30:00":
   								  if(l_durees[j].firstChild.nodeValue/90==1){
-									 document.getElementById("5d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 document.getElementById("5d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("5d"+i).style.backgroundColor = "orange";
 									 }
 								  else if(l_durees[j].firstChild.nodeValue/90==2){
-									 document.getElementById("5d"+i).rowSpan = 2;
-									 let cell =document.getElementById("6d"+i);
-									 let row = cell.parentNode;
-									 row.removeChild(cell);
-									 document.getElementById("5d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									
+									 document.getElementById("5d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("5d"+i).style.backgroundColor = "orange";
+									 document.getElementById("6d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("6d"+i).style.backgroundColor = "orange";
 									}
 								  else if(l_durees[j].firstChild.nodeValue/90==3){
-									 document.getElementById("5d"+i).rowSpan = 3;
-									 let cell =document.getElementById("6d"+i);
-									 let cell2 =document.getElementById("7d"+i);
-									 let row = cell.parentNode;
-									 let row2 = cell.parentNode;
-									 row.removeChild(cell);
-									 row2.removeChild(cell2);
-									 document.getElementById("5d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									
+									 document.getElementById("5d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("5d"+i).style.backgroundColor = "orange";
+									 document.getElementById("6d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("6d"+i).style.backgroundColor = "orange";
+									 document.getElementById("7d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("7d"+i).style.backgroundColor = "orange";
 									}
   								break;
   							case "17:00:00":
   								  if(l_durees[j].firstChild.nodeValue/90==1){
-									 document.getElementById("6d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 document.getElementById("6d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("6d"+i).style.backgroundColor = "orange";
 									 }
 								  else if(l_durees[j].firstChild.nodeValue/90==2){
-									 document.getElementById("6d"+i).rowSpan = 2;
-									 let cell =document.getElementById("7d"+i);
-									 let row = cell.parentNode;
-									 row.removeChild(cell);
-									 document.getElementById("6d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 
+									 document.getElementById("6d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("6d"+i).style.backgroundColor = "orange";
+									 document.getElementById("7d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("7d"+i).style.backgroundColor = "orange";
 									}
-								  else if(l_durees[j].firstChild.nodeValue/90==3){
-									 document.getElementById("6d"+i).rowSpan = 3;
-									 let cell =document.getElementById("7d"+i);
-									 let cell2 =document.getElementById("8d"+i);
-									 let row = cell.parentNode;
-									 let row2 = cell.parentNode;
-									 row.removeChild(cell);
-									 row2.removeChild(cell2);
-									 document.getElementById("6d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
-									}
+								  
   								break;
   							case "18:30:00":
   								  if(l_durees[j].firstChild.nodeValue/90==1){
-									 document.getElementById("7d"+i).innerHTML=l_cours[j].firstChild.nodeValue+"<div>"+
-									 l_salles[j].firstChild.nodeValue+"</div>";
+									 document.getElementById("7d"+i).innerHTML="<a href='ficheAppel?id="+l_ids[j].firstChild.nodeValue+"'>"+l_cours[j].firstChild.nodeValue+"<div>"+
+									 l_salles[j].firstChild.nodeValue+"</div></a>";
+									 document.getElementById("7d"+i).style.backgroundColor = "orange";
 									 }
    								break;
   							default:
