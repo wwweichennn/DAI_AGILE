@@ -66,7 +66,7 @@ public class centrale extends HttpServlet {
 						request.getRequestDispatcher("emploiDuTemps").forward(request, response);
 						}
 					else if(bd2.consulterType(CodeU).equals("Scolarite")){
-						request.getRequestDispatcher("accueil").forward(request, response);
+						request.getRequestDispatcher("Accueil").forward(request, response);
 					}
 					}
 				}
