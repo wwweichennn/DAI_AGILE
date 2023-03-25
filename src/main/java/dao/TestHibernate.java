@@ -14,6 +14,7 @@ import metier.Cours;
 import metier.Enseignant;
 import metier.Etudiant;
 import metier.Justificatif;
+import metier.Scolarite;
 import metier.Seance;
 import metier.Users;
 
@@ -91,8 +92,8 @@ public class TestHibernate
 		Etudiant u3=new Etudiant("weichen@gmail.com","1234","Ma","rong","Mme",DFDATE.parse("15/11/1998"),"aaa@qqq","aaaaaaaaaa","IPM","FI");
 		Etudiant u4=new Etudiant("zhibo@gmail.com","1234","abc","def","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa","IPM","FA");
 
-		Users u5=new Users("weichen@gmail.com","1234","zzz","rrr","Mme",DFDATE.parse("15/11/1998"),"aaa@qqq","aaaaaaaaaa");
-		Users u6=new Users("zhibo@gmail.com","1234","ppp","vvv","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa");
+		Scolarite u5=new Scolarite("weichen@gmail.com","1234","zzz","rrr","Mme",DFDATE.parse("15/11/1998"),"aaa@qqq","aaaaaaaaaa","ME001");
+		Scolarite u6=new Scolarite("zhibo@gmail.com","1234","ppp","vvv","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa","MF204");
 
 		session.save(u1);
 		session.save(u2);

@@ -18,7 +18,7 @@ public class Scolarite extends Users{
 	public Scolarite() {}
 	
 	public Scolarite(String identifiant, String motDePasse, String nom, String prenom, String sexe, Date dateNaissance,
-			String mailSupplement, String photo,String parcours,String bureauS) 
+			String mailSupplement, String photo,String bureauS) 
 	{
 		super(identifiant, motDePasse, nom, prenom, sexe, dateNaissance, mailSupplement, photo);
 		this.bureauS = bureauS;
