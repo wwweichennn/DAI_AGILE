@@ -29,8 +29,8 @@
 			<%
 			List<Object> listeAbs = (List<Object>) request.getAttribute("listeAbs");
 				            for (Object obj : listeAbs) {
-				                    if (obj instanceof Utilisateurs) {
-				                    	 Utilisateurs etudiant = (Utilisateurs) obj;
+				                    if (obj instanceof Users) {
+				                    	 Users etudiant = (Users) obj;
 				                    	
 				//                 for (Utilisateurs etudiant : (ArrayList<Utilisateurs>) request.getAttribute("listeAbs"))
 			%>
