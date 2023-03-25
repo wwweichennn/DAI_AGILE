@@ -90,10 +90,14 @@ public class TestHibernate
 		Enseignant u2=new Enseignant("zhibo@gmail.com","1234","xie","zhibo","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa","MF202");
 
 		Etudiant u3=new Etudiant("marong@gmail.com","1234","Ma","rong","Mme",DFDATE.parse("15/11/1998"),"aaa@qqq","aaaaaaaaaa","IPM","FI");
-		Etudiant u4=new Etudiant("abcdef@gmail.com","1234","abc","def","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa","IPM","FA");
+		Etudiant u4=new Etudiant("jean@gmail.com","1234","Jean","martin","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa","IPM","FA");
+		Etudiant u5=new Etudiant("thomas@gmail.com","1234","Thomas","Robert","M",DFDATE.parse("15/11/1998"),"aaa@qqq","aaaaaaaaaa","IPM","FI");
+		Etudiant u6=new Etudiant("girard@gmail.com","1234","Girard","Marty","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa","IPM","FA");
+		Etudiant u7=new Etudiant("vincent@gmail.com","1234","Vincent","Julien","M",DFDATE.parse("15/11/1998"),"aaa@qqq","aaaaaaaaaa","IPM","FI");
+		Etudiant u8=new Etudiant("benoit@gmail.com","1234","Benoit","Jacob","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa","IPM","FA");
 
-		Scolarite u5=new Scolarite("zzzrrr@gmail.com","1234","zzz","rrr","Mme",DFDATE.parse("15/11/1998"),"aaa@qqq","aaaaaaaaaa","ME001");
-		Scolarite u6=new Scolarite("pppvvv@gmail.com","1234","ppp","vvv","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa","MF204");
+		Scolarite u9=new Scolarite("robin@gmail.com","1234","Robin","Adam","Mme",DFDATE.parse("15/11/1998"),"aaa@qqq","aaaaaaaaaa","ME001");
+		Scolarite u10=new Scolarite("barbier@gmail.com","1234","Barbier","Antoine","M",DFDATE.parse("04/04/1998"),"aaa@qqq","aaaaaaaaaa","MF204");
 
 		session.save(u1);
 		session.save(u2);
@@ -101,6 +105,10 @@ public class TestHibernate
 		session.save(u4);
 		session.save(u5);
 		session.save(u6);
+		session.save(u7);
+		session.save(u8);
+		session.save(u9);
+		session.save(u10);
 	
 		t.commit();
 		session.close();
@@ -118,14 +126,28 @@ public class TestHibernate
 		Cours c1 =  session.get(Cours.class, 1);
 		Users u2 =  session.get(Users.class, 2);
 		Cours c2 =  session.get(Cours.class, 2);
+		Cours c3 =  session.get(Cours.class, 3);
+		Cours c4 =  session.get(Cours.class, 4);
+		Cours c5 =  session.get(Cours.class, 5);
 		
-		Seance s1= new Seance("Me401",DFDATE.parse("04/01/2023"),90,DF.parse("04/01/2023 09:00"),"validé",u1,c1);
-		Seance s2= new Seance("Me401",DFDATE.parse("04/01/2023"),180,DF.parse("04/01/2023 14:00"),"validé",u1,c1);
-		Seance s3= new Seance("Me401",DFDATE.parse("05/01/2023"),90,DF.parse("05/01/2023 09:00"),"validé",u2,c2);
+		Seance s1= new Seance("ME401",DFDATE.parse("23/03/2023"),270,DF.parse("23/03/2023 08:00"),"valide",u1,c4);
+		Seance s2= new Seance("MF105",DFDATE.parse("24/03/2023"),180,DF.parse("24/03/2023 14:00"),"enregistrer",u1,c3);
+		Seance s3= new Seance("ME310",DFDATE.parse("20/03/2023"),180,DF.parse("20/03/2023 14:00"),"novalide",u1,c2);
+		
+		Seance s4= new Seance("ME410",DFDATE.parse("21/03/2023"),90,DF.parse("21/03/2023 11:00"),"novalide",u1,c3);
+		Seance s5= new Seance("MF103",DFDATE.parse("27/03/2023"),180,DF.parse("27/03/2023 14:00"),"novalide",u1,c3);
+		Seance s6= new Seance("MC405",DFDATE.parse("28/03/2023"),180,DF.parse("28/03/2023 09:30"),"novalide",u1,c1);
+
+		Seance s7= new Seance("ME403",DFDATE.parse("29/03/2023"),270,DF.parse("29/03/2023 08:00"),"novalide",u1,c5);
 		
 		session.save(s1);
 		session.save(s2);
 		session.save(s3);
+		session.save(s4);
+		session.save(s5);
+		session.save(s6);
+		session.save(s7);
+
 		
 		t.commit();
 		session.close();
@@ -143,15 +165,69 @@ public class TestHibernate
 		
 		Users u3 =  session.get(Users.class, 1);
 		Users u4 =  session.get(Users.class, 2);
+		Users u5 =  session.get(Users.class, 5);
+		Users u6 =  session.get(Users.class, 6);
+		Users u7 =  session.get(Users.class, 7);
+		Users u8 =  session.get(Users.class, 8);
 
 		
 		Seance s1= session.get(Seance.class, 1);
 		Seance s2= session.get(Seance.class, 2);
 		Seance s3= session.get(Seance.class, 3);
+		Seance s4= session.get(Seance.class, 4);
+		Seance s5= session.get(Seance.class, 5);
+		Seance s6= session.get(Seance.class, 6);
+		Seance s7= session.get(Seance.class, 7);
+
+		
+		u3.participe(s1, "present");
+		u4.participe(s1, "present");
+		u5.participe(s1, "present");
+		u6.participe(s1, "present");
+		u7.participe(s1, "present");
+		u8.participe(s1, "present");
+		
+		u3.participe(s2, "present");
+		u4.participe(s2, "present");
+		u5.participe(s2, "present");
+		u6.participe(s2, "present");
+		u7.participe(s2, "present");
+		u8.participe(s2, "present");
 		
 		u3.participe(s3, "present");
-		u4.participe(s1, "absent");
-		u4.participe(s2, "present");
+		u4.participe(s3, "present");
+		u5.participe(s3, "present");
+		u6.participe(s3, "present");
+		u7.participe(s3, "present");
+		u8.participe(s3, "present");
+		
+		u3.participe(s4, "present");
+		u4.participe(s4, "present");
+		u5.participe(s4, "present");
+		u6.participe(s4, "present");
+		u7.participe(s4, "present");
+		u8.participe(s4, "present");
+		
+		u3.participe(s5, "present");
+		u4.participe(s5, "present");
+		u5.participe(s5, "present");
+		u6.participe(s5, "present");
+		u7.participe(s5, "present");
+		u8.participe(s5, "present");
+		
+		u3.participe(s6, "present");
+		u4.participe(s6, "present");
+		u5.participe(s6, "present");
+		u6.participe(s6, "present");
+		u7.participe(s6, "present");
+		u8.participe(s6, "present");
+		
+		u3.participe(s7, "present");
+		u4.participe(s7, "present");
+		u5.participe(s7, "present");
+		u6.participe(s7, "present");
+		u7.participe(s7, "present");
+		u8.participe(s7, "present");
 		
 		t.commit();
 		session.close();
