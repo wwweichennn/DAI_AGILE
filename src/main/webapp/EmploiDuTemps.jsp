@@ -40,10 +40,8 @@
 }
   </style>
 </head>
-<body>
-	<%
+<body>	
 
-	%>
 	<!-- menu -->
 	<div class="menu">
 		<ul>
@@ -69,7 +67,8 @@
 		</ul>
 	</div>
 	<!-- /menu -->
-	<div class="parent">
+	<div class="container">
+
 		<div class="div1">
 
 			<h1 >Bienvenue de nouveau, ${requestScope.nom}</h1>
@@ -130,7 +129,7 @@
 						%>
 
 					</tr>
-					<tr >
+					<tr>
 						<td class="heure" id="h2">9:30-11:00</td>
 						<%
 						for (int i = 0; i < 7; i++) {
@@ -138,7 +137,7 @@
 						}
 						%>
 					</tr>
-					<tr >
+					<tr>
 						<td class="heure" id="h3">11:00-12:30</td>
 						<%
 						for (int i = 0; i < 7; i++) {
@@ -214,6 +213,5 @@
 				id="recapulatif">Recapulatif</button>
 		</div>
 	</div>
-
 </body>
 </html>

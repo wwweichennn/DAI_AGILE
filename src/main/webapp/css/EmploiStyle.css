@@ -1,6 +1,21 @@
 @charset "UTF-8";
-body{
-	background-color: #FFFFE7;
+
+body {
+  background-image: url("../img/ut1_arsenal.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+	text-align: center;
+	
+	background-color : white;
+	border-radius: 15px;
+	margin: 0 auto;
+	padding: 40px 10px ;
+	top: 50%;
+	width: 70%;
 }
 
 table{
@@ -117,17 +132,7 @@ h3{
   background: #fff;
   color: #d90429;
 }
-/*.parent { 
-display: grid; 
-grid-template-columns: repeat(5, 1fr); 
-grid-template-rows: repeat(5, 1fr); 
-grid-column-gap: 4px;
-grid-row-gap: 0px; 
-}
-.div1 { grid-area: 1 / 1 / 2 / 6; } 
-.div2 { grid-area: 2 / 1 / 5 / 6; } 
-.div3 { grid-area: 5 / 2 / 6 / 3; } 
-.div4 { grid-area: 5 / 4 / 6 / 5; } */
+
 a{
 　　text-decoration:none;
 	color:#55232d;
