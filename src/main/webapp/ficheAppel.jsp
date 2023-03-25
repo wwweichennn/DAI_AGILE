@@ -6,13 +6,12 @@
 <meta charset="UTF-8">
 <title>Fiche d'Appel</title>
 <link rel="stylesheet" type="text/css" href="css/ficheAppel.css">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="element">
-<br/>
+
 <!-- menu -->
-	<div class="menu">
+<div class="menu">
 		<ul>
 			<li><img src="img/logo-ut1.png" class="logo-ut1" /></li>
 			<div class="accueil">
@@ -36,6 +35,7 @@
 		</ul>
 	</div>
 	<!-- /menu -->
+<div class="container">
 <h1 class="titre">Fiche d'appel pour le cours DAI</h1>
 <ul class="appel">
   <li class="appel-item">
@@ -119,7 +119,6 @@
 </ul>
 <input type="submit" class="btn" value="Enregistrer">
 <input type="submit" class="btn" value="Valider">
-<br/>
 </div>
 <script>
 const data = [
