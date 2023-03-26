@@ -124,21 +124,20 @@ public class TestHibernate
 		
 		Users u1 =  session.get(Users.class, 1);
 		Cours c1 =  session.get(Cours.class, 1);
-		Users u2 =  session.get(Users.class, 2);
 		Cours c2 =  session.get(Cours.class, 2);
 		Cours c3 =  session.get(Cours.class, 3);
 		Cours c4 =  session.get(Cours.class, 4);
-		Cours c5 =  session.get(Cours.class, 5);
+		Cours c10 =  session.get(Cours.class, 10);
 		
-		Seance s1= new Seance("ME401",DFDATE.parse("23/03/2023"),270,DF.parse("23/03/2023 08:00"),"valide",u1,c4);
-		Seance s2= new Seance("MF105",DFDATE.parse("24/03/2023"),180,DF.parse("24/03/2023 14:00"),"enregistrer",u1,c3);
-		Seance s3= new Seance("ME310",DFDATE.parse("20/03/2023"),180,DF.parse("20/03/2023 14:00"),"novalide",u1,c2);
+		Seance s1= new Seance("ME401",DFDATE.parse("28/03/2023"),270,DF.parse("28/03/2023 08:00"),"valide",u1,c4);
+		Seance s2= new Seance("MF105",DFDATE.parse("27/03/2023"),180,DF.parse("27/03/2023 14:00"),"enregistrer",u1,c3);
+		Seance s3= new Seance("ME310",DFDATE.parse("28/03/2023"),180,DF.parse("28/03/2023 14:00"),"novalide",u1,c10);
 		
-		Seance s4= new Seance("ME410",DFDATE.parse("21/03/2023"),90,DF.parse("21/03/2023 11:00"),"novalide",u1,c3);
-		Seance s5= new Seance("MF103",DFDATE.parse("27/03/2023"),180,DF.parse("27/03/2023 14:00"),"novalide",u1,c3);
-		Seance s6= new Seance("MC405",DFDATE.parse("28/03/2023"),180,DF.parse("28/03/2023 09:30"),"novalide",u1,c1);
+		Seance s4= new Seance("ME410",DFDATE.parse("29/03/2023"),90,DF.parse("29/03/2023 11:00"),"novalide",u1,c3);
+		Seance s5= new Seance("MF103",DFDATE.parse("29/03/2023"),180,DF.parse("29/03/2023 14:00"),"novalide",u1,c3);
+		Seance s6= new Seance("MC405",DFDATE.parse("30/03/2023"),180,DF.parse("30/03/2023 09:30"),"novalide",u1,c1);
 
-		Seance s7= new Seance("ME403",DFDATE.parse("29/03/2023"),270,DF.parse("29/03/2023 08:00"),"novalide",u1,c5);
+		Seance s7= new Seance("ME403",DFDATE.parse("31/03/2023"),180,DF.parse("31/03/2023 15:30"),"novalide",u1,c4);
 		
 		session.save(s1);
 		session.save(s2);
