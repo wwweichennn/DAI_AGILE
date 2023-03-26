@@ -63,6 +63,7 @@ public class ServletPlanning extends HttpServlet {
 									out.println("<date>" + s.getDateS() + "</date>");
 									out.println("<duree>" + s.getDureeS() + "</duree>");
 									out.println("<hdebut>" + s.getHeureDebut() + "</hdebut>");
+									out.println("<statut>" + s.getStatutFicheAppel() + "</statut>");
 								}				
 				}
 			catch (Exception ex)

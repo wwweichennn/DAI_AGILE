@@ -163,8 +163,8 @@ public class TestHibernate
 		/*----- Ouverture d'une transaction -----*/
 		Transaction t = session.beginTransaction();
 		
-		Users u3 =  session.get(Users.class, 1);
-		Users u4 =  session.get(Users.class, 2);
+		Users u3 =  session.get(Users.class, 3);
+		Users u4 =  session.get(Users.class, 4);
 		Users u5 =  session.get(Users.class, 5);
 		Users u6 =  session.get(Users.class, 6);
 		Users u7 =  session.get(Users.class, 7);
