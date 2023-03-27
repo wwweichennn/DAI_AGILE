@@ -72,8 +72,12 @@ public class centrale extends HttpServlet {
 					else if(bd2.consulterType(CodeU).equals("Scolarite")){
 						request.getRequestDispatcher("Accueil").forward(request, response);
 					}
+					else if(bd2.consulterType(CodeU).equals("Etudiant")){
+						request.setAttribute("nom", bd2.consulterNom(CodeU));
+						request.setAttribute("id", CodeU);
+						request.getRequestDispatcher("AcceuilEtudiant").forward(request, response);
 					}
-				}
+				}}
 		 catch (Exception e) {
 				e.printStackTrace();
 				request.setAttribute("generale_error", "Probleme technique ! Veuillez contacter l'administrateur.");

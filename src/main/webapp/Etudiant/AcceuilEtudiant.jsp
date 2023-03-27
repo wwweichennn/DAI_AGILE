@@ -24,29 +24,30 @@
 </head>
 <body>
 
-	<nav>
-		<div id="logo">LOGO</div>
-		<h1>Bienvenue à la l'espace Etudiant UT1 !</h1>
-	</nav>
+
+	<!-- menu -->
+	<div class="menu">
+		<ul>
+			<li><img src="img/logo-ut1.png" class="logo-ut1" /></li>
+			<div class="accueil">
+				<li><a href="webapp.AcceuilEtudiant">Accueil</a>
+			</div>
+			</li>
+			
+
+			<div class="compte">
+				<li><a href="#">Mon Compte</a>
+					<ul>
+						<li><a href="CtrlProfil">Mes informations</a></li>
+						<li>Déconnextion</li>
+					</ul>
+			</div>
+			</li>
+		</ul>
+	</div>
 
 
-
-	<div id="outer-container">
-		<div id="sidebar">
-
-			<h3>Profil</h3>
-			<p>Image</p>
-			<p>Nom</p>
-			<p>Prenom</p>
-			<p>Parcour</p>
-			<p>Formation</p>
-			<p>
-				<a href="CtrlFonctionalitesEtu?type_Moi=Modif">Modifier mon
-					profil </a>
-			</p>
-
-
-		</div>
+	
 		<div id="content">
 
 
