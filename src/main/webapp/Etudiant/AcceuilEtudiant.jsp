@@ -7,20 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Etudiant</title>
 <link rel="stylesheet" href="style/StyleAcceuilEtu.css">
-<style>
-.button {
-	background-color: #DC143C;
-	border: none;
-	color: white;
-	padding: 20px 34px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 20px;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-</style>
+
+
 </head>
 <body>
 
@@ -48,13 +36,13 @@
 
 
 	
-		<div id="content">
+		<div class="content">
 
 
 
 			<div>
-				<h1>Veuillez choisir le mois pour lequel vous voulez consulter
-					vos absences :</h1>
+				<h2>Veuillez choisir le mois pour lequel vous voulez consulter
+					vos absences :</h2>
 				<h2>2022</h2>
 				<a href="CtrlFonctionalitesEtu?type_Moi=Septembre" class="button">Septembre</a> <a
 					href="CtrlFonctionalitesEtu?type_Moi=Octobre" class="button">Octobre</a> <a

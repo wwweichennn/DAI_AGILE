@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="metier.*"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style/StyleAcceuilEtu.css">
+<link rel="stylesheet" href="style/absmois.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -34,18 +37,40 @@
 
 
 	
-		<div id="content">
+		<div class="content">
 
 
 
 			
-				<h1>Abscenses pour le mois de 
-		<%= request.getParameter("type_Moi") %></h1>
-		<p>> Date/heure/cours---------------------------------- Deposer Justificatif</p>
-<p>> Date/heure/cours---------------------------------- Deposer Justificatif</p>
-<p>> Date/heure/cours---------------------------------- Deposer Justificatif</p>
-
-/D/ZDzdzdzdz
+				<h2>Abscenses pour le mois de 
+		<%= request.getParameter("type_Moi") %></h2><br>
+		
+		<table border="1">
+		<thead>
+			<tr>
+				<th>Date</th>
+			
+			</tr>
+		</thead>
+		<tbody>
+		
+			<%
+			List<Object> listeAbs = (List<Object>) request.getAttribute("listeAbs");
+				            for (Object obj : listeAbs) {
+				                    if (obj instanceof Users) {
+				                    	 Seance s = (Seance) obj;
+				                    	
+				//                 for (Utilisateurs etudiant : (ArrayList<Utilisateurs>) request.getAttribute("listeAbs"))
+			%>
+			<tr>
+				<td><%= s.getDateS() %></td>
+			
+			</tr>
+			<% } }%>
+		</tbody>
+	</table>
+		
+	
 			
 
 			<!-- 	<ul> -->

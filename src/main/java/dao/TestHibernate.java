@@ -292,8 +292,8 @@ session.save(s2);
 	 * @return 
 	 */
 	public static List<Etudiant> loadEtuAbsNonJustifier() {
-		try(Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
-			Transaction t = session.beginTransaction();
+		try(Session session =HibernateUtil.getSessionFactory().getCurrentSession() ) {
+			Transaction t =session.beginTransaction();
 
 			//Liste des etudiants absence non justifier
 			String  hql = "SELECT e FROM Etudiant e JOIN e.justificatifs j WHERE j.validation = 0" ;		//Requete pour recupérer les étudiants
@@ -301,7 +301,7 @@ session.save(s2);
 
 			List queryResponse = session.createQuery(hql).list();
 
-			System.out.println("taille de la reponse : "+ queryResponse.size());
+		
 			TestHibernate.lire1(queryResponse);
 
 			t.commit();
@@ -311,25 +311,26 @@ session.save(s2);
 	
 	}
 	
-	public static List loadAbsencesEtu() {
-		try(Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
-			Transaction t = session.beginTransaction();
+	  public static List<Seance> listAbsencesEtudiant(String id){
+	    	List<Seance> seances = new ArrayList<>();
+	    	String hql = "select s from Participer p , Seance s, users u where p.seance.idSeance = s.idSeance and p.users.CodeU = :id and p.StatutAppel like 'absent'  and u.CodeU = s.users.CodeU ";
 
-			//Liste des etudiants absence non justifier
-
-			String  hql = "SELECT p FROM Participer p left join p.justificatifs as j where j.statut = 0 and parcours = 1" ;		//Requete pour recupérer les étudiants
-
-
-			List queryResponse = session.createQuery(hql).list();
-
-			System.out.println("taille de la reponse : "+ queryResponse.size());
-			TestHibernate.lire1(queryResponse);
-
-			t.commit();
-			return queryResponse;
-		}
-	
-	}
+	        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+	        	Transaction transaction= session.beginTransaction();
+	            Query<Seance>query = session.createQuery(hql);
+	            query.setParameter("id", id);
+	            if (!query.getResultList().isEmpty()) {
+	            	seances=query.list();
+	            }
+	            transaction.commit();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        
+	        TestHibernate.lire2(seances);
+	       
+	        return seances;
+	    }
 	/**
 	 * Programme de test.
 	 */
@@ -339,13 +340,13 @@ session.save(s2);
 //		TestHibernate.createUsers();
 //		TestHibernate.createCours();
 //		TestHibernate.createSeance();
-//		TestHibernate.createParticipe();
-//		TestHibernate.createDeposerJus();
+	//TestHibernate.createParticipe();
+//	TestHibernate.createDeposerJus();
 	
-		TestHibernate.loadEtuAbsNonJustifier();
+		//TestHibernate.loadEtuAbsNonJustifier();
 		//TestHibernate.loadSeancesDonner(1);
 		
-		TestHibernate.loadAbsencesEtu();
+		TestHibernate.listAbsencesEtudiant("8");
 		}
 
 	private static void affichage (List l)
@@ -380,6 +381,15 @@ session.save(s2);
 		for (Object obj : l) {
 			if (obj instanceof Etudiant) {
 				Etudiant etudiant = (Etudiant) obj;
+				System.out.println(etudiant);
+			}
+		}
+	}
+
+	public static void lire2(List l) {
+		for (Object obj : l) {
+			if (obj instanceof Etudiant) {
+				Seance etudiant = (Seance) obj;
 				System.out.println(etudiant);
 			}
 		}

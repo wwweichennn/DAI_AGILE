@@ -1,6 +1,7 @@
 package crtl;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeMap;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.TestHibernate;
 
 
 /**
@@ -76,8 +79,13 @@ public class CtrlFonctionalitesEtu extends HttpServlet {
 		
 		}
 	
+	List liste = TestHibernate.listAbsencesEtudiant(id);
 	
-		
+
+	//Pour un chainage vers page des IPM 
+	request.setAttribute("listeAbs", liste);
+	
+
 	// Chainage.
 	request.setAttribute("Mois", action);
 	request.getRequestDispatcher(url).forward(request, response);
