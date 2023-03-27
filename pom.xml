@@ -34,11 +34,6 @@
     <version>4.0.1</version>
     <scope>provided</scope>
 </dependency>
-	<dependency>
-		<groupId>fr.capitole</groupId>
-		<artifactId>m2-dai</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
 	</dependencies>
   
   <build>
