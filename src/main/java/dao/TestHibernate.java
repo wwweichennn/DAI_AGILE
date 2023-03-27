@@ -308,6 +308,26 @@ session.save(s2);
 		}
 	
 	}
+	
+	public static List loadAbsencesEtu() {
+		try(Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+			Transaction t = session.beginTransaction();
+
+			//Liste des etudiants absence non justifier
+
+			String  hql = "SELECT p FROM Participer p left join p.justificatifs as j where j.statut = 0 and parcours = 1" ;		//Requete pour recupérer les étudiants
+
+
+			List queryResponse = session.createQuery(hql).list();
+
+			System.out.println("taille de la reponse : "+ queryResponse.size());
+			TestHibernate.lire1(queryResponse);
+
+			t.commit();
+			return queryResponse;
+		}
+	
+	}
 	/**
 	 * Programme de test.
 	 */
@@ -321,6 +341,8 @@ session.save(s2);
 		TestHibernate.createDeposerJus();
 	
 		//TestHibernate.loadSeancesDonner(1);
+		
+		TestHibernate.loadAbsencesEtu();
 		}
 
 	private static void affichage (List l)
