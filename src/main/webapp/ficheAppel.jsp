@@ -42,7 +42,7 @@
 	<div class="container">
 		<p id="nb" class="invisible">${requestScope.nb_etudiant}</p>
 		<form action="ServletPDF" method="POST">
-		<p id="id" class="invisible">${requestScope.id_trans}</p>
+		<p id="id" name="codeSeance" class="invisible">${requestScope.id_trans}</p>
 		</form>
 		<h1 class="titre">
 			Fiche d'appel pour le cours <b>${requestScope.cours}</b> le<b>

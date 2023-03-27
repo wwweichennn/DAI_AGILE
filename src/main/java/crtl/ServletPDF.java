@@ -28,6 +28,7 @@ public class ServletPDF extends HttpServlet {
 			PdfWriter.getInstance(document, response.getOutputStream());
 			document.open();
 			
+			request.getAttribute()
 			bd.telechargerPDF();
 			document.close();
 			
