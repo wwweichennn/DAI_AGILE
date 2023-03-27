@@ -41,7 +41,9 @@
 	<!-- /menu -->
 	<div class="container">
 		<p id="nb" class="invisible">${requestScope.nb_etudiant}</p>
+		<form action="ServletPDF" method="POST">
 		<p id="id" class="invisible">${requestScope.id_trans}</p>
+		</form>
 		<h1 class="titre">
 			Fiche d'appel pour le cours <b>${requestScope.cours}</b> le<b>
 				${requestScope.date}</b>
@@ -65,11 +67,13 @@
 			%>
 		</ul>
 
-		<input type="submit" class="btn" value="Enregistrer"
+		<input type="button" class="btn" value="Enregistrer"
 			onclick="location.href='CtrlActionFicheAppel?type_action=enregistrer'">
-		<input type="submit" class="btn" value="Valider"
-			onclick="submitData()"> <input type="submit" class="btn"
+		<input type="button" class="btn" value="Valider"
+			onclick="submitData()"> 
+		<input type="submit" class="btn"
 			value="Télécharger PDF" onclick="">
+			</form>
 	</div>
 	<script>
 		const data = [];
