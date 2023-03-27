@@ -281,6 +281,53 @@ public class bd2 {
 		}
 		return 0;
 	}
+	
+	public static String updateStatusEtu (String CodeU,String CodeS) throws Exception
+	{
+		/*----- Création éventuelle de la connexion à la base de données -----*/
+		if (bd2.cx == null) {
+			bd2.connection();
+		}
+	/*----- Requête SQL -----*/
+	String sql = "UPDATE Participer SET Status = 'absence' WHERE CodeU = ? AND CodeSeance = ? ;";
+
+	/*----- Ouverture de l'espace de requête -----*/
+	try (PreparedStatement st = bd2.cx.prepareStatement(sql))
+		{
+		/*----- Exécution de la requête -----*/
+		st.setString(1, CodeU);
+		st.setString(2, CodeS);
+		return st.executeUpdate() + " ";
+		}
+	catch (SQLException ex)
+		{
+		throw new SQLException("Exception bd2.updateStatusEtu() : Problème SQL - " + ex.getMessage());
+		}
+	}
+	
+	
+	public static String updateStatusFicheAppel (String CodeS) throws Exception
+	{
+		/*----- Création éventuelle de la connexion à la base de données -----*/
+		if (bd2.cx == null) {
+			bd2.connection();
+		}
+	/*----- Requête SQL -----*/
+	String sql = "UPDATE Seance SET StatutFicheAppel = 'valide' WHERE CodeSeance = ? ;";
+
+	/*----- Ouverture de l'espace de requête -----*/
+	try (PreparedStatement st = bd2.cx.prepareStatement(sql))
+		{
+		/*----- Exécution de la requête -----*/
+		st.setString(1, CodeS);
+		return st.executeUpdate() + " ";
+		}
+	catch (SQLException ex)
+		{
+		throw new SQLException("Exception bd2.updateStatusEtu() : Problème SQL - " + ex.getMessage());
+		}
+	}
+
 
 	public static void main(String[] args) throws Exception {
 

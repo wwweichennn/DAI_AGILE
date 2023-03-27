@@ -1,6 +1,7 @@
 package crtl;
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bd.bd2;
 import metier.Etudiant;
 
 /**
@@ -23,17 +25,7 @@ public class CtrlActionFicheAppel extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String type_action = request.getParameter("type_action");
 		
-		switch(type_action) {
-		case "enregistrer":
-			
-			break;
-		case "valider":
-			
-			
-			break;
-		}
 		
 	}
 
@@ -41,18 +33,30 @@ public class CtrlActionFicheAppel extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BufferedReader reader = request.getReader();
-		  String jsonString = reader.readLine();
-		  JSONObject data = new JSONObject(jsonString);
-		  String courseId = data.getString("course_id");
-		  JSONArray studentsArray = data.getJSONArray("students");
-		  List<Etudiant> students = new ArrayList<>();
-		  for (int i = 0; i < studentsArray.length(); i++) {
-		    JSONObject studentObject = studentsArray.getJSONObject(i);
-		    String name = studentObject.getString("name");
-		    String status = studentObject.getString("status");
-		    students.add(new Etudiant(name, status));
-		  }
-	}
+		 String[] studentIds = request.getParameterValues("students[]");
+		 String seanceId = request.getParameter("seance_id");
+		try {
+			String rs2=bd2.updateStatusFicheAppel(seanceId);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
+			try {
+		        String rs2 = bd2.updateStatusFicheAppel(seanceId);
+		        if (studentIds != null) {
+		            for (String studentId : studentIds) {
+		                String rs = bd2.updateStatusEtu(studentId, seanceId);
+		            }
+		            request.getRequestDispatcher("emploiDuTemps").forward(request, response);
+		        }
+		        
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        // 将错误信息发送到响应流中
+		        response.getWriter().println("Error occurred: " + e.getMessage());
+		    }
+		}
+	
+	}
 }
