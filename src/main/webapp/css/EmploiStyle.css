@@ -145,9 +145,14 @@ a{
     border-radius: 10px;
     background-color: #dc0713;
     box-shadow: 1px 1px 33px #fff;
+   
 }     
+
 .menu ul li     
 {     
+	display: block;
+	position: relative;
+	
     width:160px; height:60px;     
     list-style:none;/*去掉圆点*/     
     float:left;/*水平显示*/     
@@ -157,6 +162,7 @@ a{
     text-align:center;     
     line-height:60px;/* 行高跟 高度一致时，竖直居中*/     
     border-right:1px solid #f3fae3/*右边框*/     
+    
 }
    
 .menu ul li a     
@@ -172,7 +178,6 @@ a{
 }     
 .menu ul li ul li      
 {     
-	
     border: none;
     border-top: 2px solid #dc7676bd;
     background: rgb(237 57 57 / 92%);
@@ -181,12 +186,16 @@ a{
     width:160px; 
     height:45px;  
     line-height:45px;
-    font-size:18px;
-	 z-index:999;
+    font-size:18px; 
   
 }     
 .menu ul li ul     
 {     
+	height: 0;
+    overflow: hidden;
+    position: absolute;
+    top:40px;
+	
     display:none;/*不显示*/ 
       
      

@@ -78,5 +78,39 @@ h1{
 	position:relative; 
 	height:60px;
 	left:-15px;
+	top: -2px;
 	border-radius: 10px;   
+}
+
+
+/*liste*/
+.all{
+	left: 30px;
+    top: 20px;
+    position: relative;
+    font-size: 20px;
+}
+.abix-tree-list li {
+    list-style: none;
+    
+}
+.abix-tree-list{
+	
+}
+.abix-tree-list .collapsed span.icon, 
+.abix-tree-list .expanded span.icon {
+    margin-right: 6px;
+    cursor: pointer;  
+}
+
+.infos{
+	left: 30px;
+    top: 40px;
+    position: relative;
+    font-size: 20px;
+   
+}
+.infos.a{
+	text-decoration:none;     
+	
 }
