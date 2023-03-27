@@ -10,12 +10,13 @@ import java.util.ArrayList;
 
 import javax.servlet.http.Part;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.hibernate.engine.jdbc.BinaryStream;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
+
 
 import metier.Users;
 
@@ -111,14 +112,19 @@ public class bd {
 	}
 	
 	
-	public static Document telechargerPDF(String codeSeance) throws Exception {
+	public static PDDocument telechargerPDF(String codeSeance) throws Exception {
 		
 		if(bd.cx==null) 
 		bd.connection();
 		
 		
-		Document document = new Document();
-		document.open();
+		PDDocument document = new PDDocument();
+        PDPage page = new PDPage();
+        document.addPage(page);
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+        contentStream.beginText();
+        contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+        contentStream.newLineAtOffset(50, 700);
 			
 		ArrayList<String> PDF = new ArrayList<String>();
 		PDF = bd2.consulterEtuParticipe(codeSeance);
@@ -133,9 +139,16 @@ public class bd {
 					String nomprenom = bd2.consulterNom(Integer.parseInt(PDF.get(i)));
 						try(ResultSet rs=st.executeQuery();){
 							while(rs.next()) {
-								document.add(new Paragraph(nomprenom));
-								document.add(new Paragraph(rs.getString("Status")));
+								
+				                contentStream.showText("Name: " + nomprenom);
+				                contentStream.newLine();
+				                contentStream.showText("Status: " + rs.getString("Status"));
+				                contentStream.newLine();
 				}
+							contentStream.endText();
+				            contentStream.close();
+				            rs.close();
+				            st.close();					        				            
 			}
 		}
 		catch(SQLException sqle) 

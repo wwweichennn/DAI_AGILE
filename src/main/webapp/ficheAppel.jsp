@@ -54,10 +54,8 @@
 			for (int i = 0; i < nb; i++) {
 				int j = i + 1;
 				out.println("<li class='appel-item'>");
-				out.println(
-				"<img src='imgStudent/" + j + ".jpg' alt='Photo de l'étudiant " + i + "' class='imge' id='img" + i + "'>");
-				out.println("<input type='hidden' id='etu_id" + i + "' value='etu_id" + i + "'>"
-				+ request.getAttribute("etudiant_id" + i) +"/>");
+				out.println("<img src='imgStudent/" + j + ".jpg' alt='Photo de l'étudiant " + i + "' class='imge' id='img" + i + "'>");
+				out.println("<input type='hidden' id='etu_id" + i + "' value='"+request.getAttribute("etudiant_id" + i)+"'>");
 				out.println("<h3>" + request.getAttribute("etudiant_nom" + i) + " " + request.getAttribute("etudiant_prenom" + i)
 				+ "</h3>");
 				out.println("<span class='formation'>" + request.getAttribute("etudiant_formation" + i) + "</span>");
@@ -67,13 +65,11 @@
 			%>
 		</ul>
 
-		<input type="button" class="btn" value="Enregistrer"
-			onclick="location.href='CtrlActionFicheAppel?type_action=enregistrer'">
-		<input type="button" class="btn" value="Valider"
-			onclick="submitData()"> 
-		<input type="submit" class="btn"
-			value="Télécharger PDF" onclick="">
-			</form>
+		<input type="button" class="btn" value="Enregistrer" onclick="location.href='CtrlActionFicheAppel?type_action=enregistrer'">
+		<input type="button" class="btn" id="btnValider" value="Valider" onclick="submitData()"> 
+		<input type="submit" class="btn" value="Télécharger PDF" onclick="">
+	</form>
+	<p id="test"></p>
 	</div>
 	<script>
 		const data = [];
@@ -126,11 +122,12 @@
 		        formData.append('students[]', students[j]);
 		    }
 		    formData.append('seance_id', seanceID);
-
-		    // 发送表单数据到Servlet
+		    
 		    var xhr = new XMLHttpRequest();
-		    xhr.open('POST', 'CtrlActionFicheAppel');
+		    xhr.open('POST', 'CtrlValiderFicheAppel', true);
 		    xhr.send(formData);
+
+
 		}
 	</script>
 </body>
