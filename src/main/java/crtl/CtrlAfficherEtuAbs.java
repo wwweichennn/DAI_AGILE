@@ -1,5 +1,8 @@
-package controleur;
+package crtl;
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/wwweichennn/DAI_AGILE.git
 import java.io.IOException;
 import java.util.*;
 

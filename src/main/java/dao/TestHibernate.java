@@ -123,6 +123,7 @@ public class TestHibernate
 		Transaction t = session.beginTransaction();
 		
 		Users u1 =  session.get(Users.class, 1);
+		Users u2 =  session.get(Users.class, 2);
 		Cours c1 =  session.get(Cours.class, 1);
 		Cours c2 =  session.get(Cours.class, 2);
 		Cours c3 =  session.get(Cours.class, 3);
@@ -138,14 +139,16 @@ public class TestHibernate
 		Seance s6= new Seance("MC405",DFDATE.parse("30/03/2023"),180,DF.parse("30/03/2023 09:30"),"novalide",u1,c1);
 
 		Seance s7= new Seance("ME403",DFDATE.parse("31/03/2023"),180,DF.parse("31/03/2023 15:30"),"novalide",u1,c4);
-		
-		session.save(s1);
-		session.save(s2);
+		Seance s8= new Seance("ME401",DFDATE.parse("28/03/2023"),270,DF.parse("28/03/2023 20:00"),"valide",u2,c4);
+session.save(s1);
+session.save(s2);
 		session.save(s3);
 		session.save(s4);
 		session.save(s5);
-		session.save(s6);
-		session.save(s7);
+	session.save(s6);
+	session.save(s7);
+		
+		session.save(s8);
 
 		
 		t.commit();
@@ -187,46 +190,46 @@ public class TestHibernate
 		u8.participe(s1, "present");
 		
 		u3.participe(s2, "present");
-		u4.participe(s2, "present");
-		u5.participe(s2, "present");
+		u4.participe(s2, "absent");
+		u5.participe(s2, "absent");
 		u6.participe(s2, "present");
-		u7.participe(s2, "present");
+		u7.participe(s2, "absent");
 		u8.participe(s2, "present");
 		
 		u3.participe(s3, "present");
 		u4.participe(s3, "present");
-		u5.participe(s3, "present");
+		u5.participe(s3, "absent");
 		u6.participe(s3, "present");
 		u7.participe(s3, "present");
-		u8.participe(s3, "present");
+		u8.participe(s3, "absent");
 		
 		u3.participe(s4, "present");
 		u4.participe(s4, "present");
-		u5.participe(s4, "present");
+		u5.participe(s4, "absent");
 		u6.participe(s4, "present");
 		u7.participe(s4, "present");
-		u8.participe(s4, "present");
+		u8.participe(s4, "absent");
 		
-		u3.participe(s5, "present");
-		u4.participe(s5, "present");
+		u3.participe(s5, "absent");
+		u4.participe(s5, "absent");
 		u5.participe(s5, "present");
 		u6.participe(s5, "present");
 		u7.participe(s5, "present");
-		u8.participe(s5, "present");
+		u8.participe(s5, "absent");
 		
 		u3.participe(s6, "present");
 		u4.participe(s6, "present");
-		u5.participe(s6, "present");
+		u5.participe(s6, "absent");
 		u6.participe(s6, "present");
-		u7.participe(s6, "present");
-		u8.participe(s6, "present");
+		u7.participe(s6, "absent");
+		u8.participe(s6, "absent");
 		
 		u3.participe(s7, "present");
 		u4.participe(s7, "present");
-		u5.participe(s7, "present");
-		u6.participe(s7, "present");
+		u5.participe(s7, "absent");
+		u6.participe(s7, "absent");
 		u7.participe(s7, "present");
-		u8.participe(s7, "present");
+		u8.participe(s7, "absent");
 		
 		t.commit();
 		session.close();
@@ -243,12 +246,14 @@ public class TestHibernate
 		Transaction t = session.beginTransaction();
 		
 		Users u3 =  session.get(Users.class, 1);
+		Users u4 = session.get(Etudiant.class, 4);
 	
 
-		Justificatif j1=new Justificatif(false,"www",DFDATE.parse("04/01/2023"),DFDATE.parse("05/01/2023"),u3);
+		//Justificatif j1=new Justificatif(false,"www",DFDATE.parse("04/01/2023"),DFDATE.parse("05/01/2023"),u3);
+		Justificatif j2 = new Justificatif(false,"http", DFDATE.parse("05/01/2023"),DFDATE.parse("06/01/2023"),u4);
 
-		u3.getJustificatifs().add(j1);
-		session.save(j1);
+		u4.getJustificatifs().add(j2);
+		session.save(j2);
 		
 		t.commit();
 		session.close();
@@ -286,13 +291,33 @@ public class TestHibernate
 	 * Recupère et affiche les etudiants qui n'ont pas justifier leur presence
 	 * @return 
 	 */
-	public static List loadEtuAbsNonJustifier() {
+	public static List<Etudiant> loadEtuAbsNonJustifier() {
+		try(Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+			Transaction t = session.beginTransaction();
+
+			//Liste des etudiants absence non justifier
+			String  hql = "SELECT e FROM Etudiant e JOIN e.justificatifs j WHERE j.validation = 0" ;		//Requete pour recupérer les étudiants
+
+
+			List queryResponse = session.createQuery(hql).list();
+
+			System.out.println("taille de la reponse : "+ queryResponse.size());
+			TestHibernate.lire1(queryResponse);
+
+			t.commit();
+			return queryResponse;
+			
+		}
+	
+	}
+	
+	public static List loadAbsencesEtu() {
 		try(Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
 			Transaction t = session.beginTransaction();
 
 			//Liste des etudiants absence non justifier
 
-			String  hql = "SELECT u FROM Etudiant u left join u.justificatifs as j where j.statut = 0 and parcours = 1" ;		//Requete pour recupérer les étudiants
+			String  hql = "SELECT p FROM Participer p left join p.justificatifs as j where j.statut = 0 and parcours = 1" ;		//Requete pour recupérer les étudiants
 
 
 			List queryResponse = session.createQuery(hql).list();
@@ -311,13 +336,16 @@ public class TestHibernate
 	public static void main(String[] args) throws ParseException
 		{
 		
-		TestHibernate.createUsers();
-		TestHibernate.createCours();
-		TestHibernate.createSeance();
-		TestHibernate.createParticipe();
-		TestHibernate.createDeposerJus();
+//		TestHibernate.createUsers();
+//		TestHibernate.createCours();
+//		TestHibernate.createSeance();
+//		TestHibernate.createParticipe();
+//		TestHibernate.createDeposerJus();
 	
+		TestHibernate.loadEtuAbsNonJustifier();
 		//TestHibernate.loadSeancesDonner(1);
+		
+		TestHibernate.loadAbsencesEtu();
 		}
 
 	private static void affichage (List l)

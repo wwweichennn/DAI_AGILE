@@ -1,5 +1,4 @@
-package controleur;
-
+package crtl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -9,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -20,7 +20,9 @@ public class CtrlFonctionalitesEtu extends HttpServlet {
        
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-
+		
+	HttpSession session = request.getSession();
+	String id = request.getParameter("id");
 	String action = request.getParameter("type_Moi");
 	String url;
 
@@ -73,6 +75,8 @@ public class CtrlFonctionalitesEtu extends HttpServlet {
 			}
 		
 		}
+	
+	
 		
 	// Chainage.
 	request.setAttribute("Mois", action);
