@@ -123,6 +123,7 @@ public class TestHibernate
 		Transaction t = session.beginTransaction();
 		
 		Users u1 =  session.get(Users.class, 1);
+		Users u2 =  session.get(Users.class, 2);
 		Cours c1 =  session.get(Cours.class, 1);
 		Cours c2 =  session.get(Cours.class, 2);
 		Cours c3 =  session.get(Cours.class, 3);
@@ -138,14 +139,16 @@ public class TestHibernate
 		Seance s6= new Seance("MC405",DFDATE.parse("30/03/2023"),180,DF.parse("30/03/2023 09:30"),"novalide",u1,c1);
 
 		Seance s7= new Seance("ME403",DFDATE.parse("31/03/2023"),180,DF.parse("31/03/2023 15:30"),"novalide",u1,c4);
-		
-		session.save(s1);
-		session.save(s2);
+		Seance s8= new Seance("ME401",DFDATE.parse("28/03/2023"),270,DF.parse("28/03/2023 20:00"),"valide",u2,c4);
+session.save(s1);
+session.save(s2);
 		session.save(s3);
 		session.save(s4);
 		session.save(s5);
-		session.save(s6);
-		session.save(s7);
+	session.save(s6);
+	session.save(s7);
+		
+		session.save(s8);
 
 		
 		t.commit();
@@ -187,46 +190,46 @@ public class TestHibernate
 		u8.participe(s1, "present");
 		
 		u3.participe(s2, "present");
-		u4.participe(s2, "present");
-		u5.participe(s2, "present");
+		u4.participe(s2, "absent");
+		u5.participe(s2, "absent");
 		u6.participe(s2, "present");
-		u7.participe(s2, "present");
+		u7.participe(s2, "absent");
 		u8.participe(s2, "present");
 		
 		u3.participe(s3, "present");
 		u4.participe(s3, "present");
-		u5.participe(s3, "present");
+		u5.participe(s3, "absent");
 		u6.participe(s3, "present");
 		u7.participe(s3, "present");
-		u8.participe(s3, "present");
+		u8.participe(s3, "absent");
 		
 		u3.participe(s4, "present");
 		u4.participe(s4, "present");
-		u5.participe(s4, "present");
+		u5.participe(s4, "absent");
 		u6.participe(s4, "present");
 		u7.participe(s4, "present");
-		u8.participe(s4, "present");
+		u8.participe(s4, "absent");
 		
-		u3.participe(s5, "present");
-		u4.participe(s5, "present");
+		u3.participe(s5, "absent");
+		u4.participe(s5, "absent");
 		u5.participe(s5, "present");
 		u6.participe(s5, "present");
 		u7.participe(s5, "present");
-		u8.participe(s5, "present");
+		u8.participe(s5, "absent");
 		
 		u3.participe(s6, "present");
 		u4.participe(s6, "present");
-		u5.participe(s6, "present");
+		u5.participe(s6, "absent");
 		u6.participe(s6, "present");
-		u7.participe(s6, "present");
-		u8.participe(s6, "present");
+		u7.participe(s6, "absent");
+		u8.participe(s6, "absent");
 		
 		u3.participe(s7, "present");
 		u4.participe(s7, "present");
-		u5.participe(s7, "present");
-		u6.participe(s7, "present");
+		u5.participe(s7, "absent");
+		u6.participe(s7, "absent");
 		u7.participe(s7, "present");
-		u8.participe(s7, "present");
+		u8.participe(s7, "absent");
 		
 		t.commit();
 		session.close();

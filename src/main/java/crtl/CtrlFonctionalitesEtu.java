@@ -1,5 +1,4 @@
-package controleur;
-
+package crtl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -20,7 +19,7 @@ public class CtrlFonctionalitesEtu extends HttpServlet {
        
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-
+	String id = request.getParameter("id");
 	String action = request.getParameter("type_Moi");
 	String url;
 
