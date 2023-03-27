@@ -24,7 +24,10 @@
     <servlet-name>emploiDuTemps</servlet-name>
     <jsp-file>/EmploiDuTemps.jsp</jsp-file>
 </servlet>
-
+<servlet>
+    <servlet-name>testValider</servlet-name>
+    <jsp-file>/testValider.jsp</jsp-file>
+</servlet>
 <servlet-mapping>
     <servlet-name>index</servlet-name>
     <url-pattern>/index</url-pattern>
@@ -32,6 +35,10 @@
 <servlet-mapping>
     <servlet-name>ficheAppel</servlet-name>
     <url-pattern>/ficheAppel</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+    <servlet-name>testValider</servlet-name>
+    <url-pattern>/testValider</url-pattern>
 </servlet-mapping>
 <servlet-mapping>
     <servlet-name>emploiDuTemps</servlet-name>
