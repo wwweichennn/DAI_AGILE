@@ -1,4 +1,4 @@
-package controleur;
+package crtl;
 
 import java.io.IOException;
 import java.util.*;
