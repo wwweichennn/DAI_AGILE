@@ -12,7 +12,13 @@ import javax.servlet.http.Part;
 
 import org.hibernate.engine.jdbc.BinaryStream;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import metier.Users;
+
 
 
 
@@ -102,6 +108,43 @@ public class bd {
 			throw new Exception("bd.AfficherProfil() - Erreur a l'affiche du profil");		
 		}	
 		return user;	
+	}
+	
+	
+	public static Document telechargerPDF(String codeSeance) throws Exception {
+		
+		if(bd.cx==null) 
+		bd.connection();
+		
+		
+		Document document = new Document();
+		document.open();
+			
+		ArrayList<String> PDF = new ArrayList<String>();
+		PDF = bd2.consulterEtuParticipe(codeSeance);
+		
+		for(int i=0;i<PDF.size();i++) {
+			String sql="SELECT Status FROM Participer WHERE CodeU=? AND CodeSeance=? ";		
+				try(PreparedStatement st = cx.prepareStatement(sql)) 
+				{
+					st.setString(1, PDF.get(i));
+					st.setString(2, codeSeance);
+					
+					String nomprenom = bd2.consulterNom(Integer.parseInt(PDF.get(i)));
+						try(ResultSet rs=st.executeQuery();){
+							while(rs.next()) {
+								document.add(new Paragraph(nomprenom));
+								document.add(new Paragraph(rs.getString("Status")));
+				}
+			}
+		}
+		catch(SQLException sqle) 
+		{
+			throw new Exception("bd.telechargerPDF() - Erreur au telechargement pdf");		
+		}	
+		
+		}
+		return document;
 	}
 	
 	

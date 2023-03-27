@@ -36,7 +36,7 @@ public class CtrlProfil extends HttpServlet {
 			request.setAttribute("dateNaissance",user.getDateNaissance());
 			request.setAttribute("mailSupplement",user.getMailSupplement());
 			request.setAttribute("photo",user.getPhoto());
-			
+						
 			request.getRequestDispatcher("Profil").forward(request, response);
 		} catch (Exception e) {		
 			e.printStackTrace();
