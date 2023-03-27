@@ -52,6 +52,7 @@
                     <th>Nombre de Retard</th>
                 </tr>
             </thead>
+            
             <tbody>
                 <tr>
                     <td>124</td>

@@ -34,6 +34,7 @@
 		document.getElementById("aa").innerHTML = document.getElementById("jour6").innerHTML;
 	}
 </script>
+
 <style>
     .invisible {
   display: none;

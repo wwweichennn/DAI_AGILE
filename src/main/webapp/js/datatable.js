@@ -5,6 +5,7 @@
  */
 const LOCALES = window.DT_LOCALES;
 
+
 /**
  * Choosen selector. All elements matching it, will be considered as DataTables
  * @type {string}
