@@ -55,7 +55,7 @@ public class Etudiant extends Users {
 
 	@Override
 	public String toString() {
-		return "Etudiant [parcours=" + parcours + ", formation=" + formation + "]";
+		return "Etudiant [" + this.getNom() + " " + this.getPrenom() + ", parcours = "+ parcours + ", formation=" + formation + "]";
 	}
 	}
 

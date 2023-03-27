@@ -246,12 +246,14 @@ session.save(s2);
 		Transaction t = session.beginTransaction();
 		
 		Users u3 =  session.get(Users.class, 1);
+		Users u4 = session.get(Etudiant.class, 4);
 	
 
-		Justificatif j1=new Justificatif(false,"www",DFDATE.parse("04/01/2023"),DFDATE.parse("05/01/2023"),u3);
+		//Justificatif j1=new Justificatif(false,"www",DFDATE.parse("04/01/2023"),DFDATE.parse("05/01/2023"),u3);
+		Justificatif j2 = new Justificatif(false,"http", DFDATE.parse("05/01/2023"),DFDATE.parse("06/01/2023"),u4);
 
-		u3.getJustificatifs().add(j1);
-		session.save(j1);
+		u4.getJustificatifs().add(j2);
+		session.save(j2);
 		
 		t.commit();
 		session.close();
@@ -289,13 +291,12 @@ session.save(s2);
 	 * Recupère et affiche les etudiants qui n'ont pas justifier leur presence
 	 * @return 
 	 */
-	public static List loadEtuAbsNonJustifier() {
+	public static List<Etudiant> loadEtuAbsNonJustifier() {
 		try(Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
 			Transaction t = session.beginTransaction();
 
 			//Liste des etudiants absence non justifier
-
-			String  hql = "SELECT u FROM Etudiant u left join u.justificatifs as j where j.statut = 0 and parcours = 1" ;		//Requete pour recupérer les étudiants
+			String  hql = "SELECT e FROM Etudiant e JOIN e.justificatifs j WHERE j.validation = 0" ;		//Requete pour recupérer les étudiants
 
 
 			List queryResponse = session.createQuery(hql).list();
@@ -305,6 +306,7 @@ session.save(s2);
 
 			t.commit();
 			return queryResponse;
+			
 		}
 	
 	}
@@ -334,12 +336,13 @@ session.save(s2);
 	public static void main(String[] args) throws ParseException
 		{
 		
-		TestHibernate.createUsers();
-		TestHibernate.createCours();
-		TestHibernate.createSeance();
-		TestHibernate.createParticipe();
-		TestHibernate.createDeposerJus();
+//		TestHibernate.createUsers();
+//		TestHibernate.createCours();
+//		TestHibernate.createSeance();
+//		TestHibernate.createParticipe();
+//		TestHibernate.createDeposerJus();
 	
+		TestHibernate.loadEtuAbsNonJustifier();
 		//TestHibernate.loadSeancesDonner(1);
 		
 		TestHibernate.loadAbsencesEtu();
