@@ -60,6 +60,7 @@ for(int i=0;i<nb;i++){
 </ul>
 <input type="submit" class="btn" value="Enregistrer"  onclick="location.href='CtrlActionFicheAppel?type_action=enregistrer'">
 <input type="submit" class="btn" value="Valider"  onclick="submitData()">
+<input type="submit" class="btn" value="Télécharger PDF"  onclick="">
 </div>
 <script>
 const data = [];
