@@ -202,11 +202,10 @@ body {
   border-color: #DC143C;
 }
 .content {
-	  display: flex;
-  justify-content: center;
-/*   align-items: center; */
-	margin: 10px auto;
-	margin-bottom: 0;
+	
+
+margin: 10px auto;
+	
 	padding: 1em;
 	width:60%;
 	haight : auto;

@@ -10,9 +10,16 @@ import java.util.ArrayList;
 
 import javax.servlet.http.Part;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.hibernate.engine.jdbc.BinaryStream;
 
+
+
 import metier.Users;
+
 
 
 
@@ -102,6 +109,55 @@ public class bd {
 			throw new Exception("bd.AfficherProfil() - Erreur a l'affiche du profil");		
 		}	
 		return user;	
+	}
+	
+	
+	public static PDDocument telechargerPDF(String codeSeance) throws Exception {
+		
+		if(bd.cx==null) 
+		bd.connection();
+		
+		
+		PDDocument document = new PDDocument();
+        PDPage page = new PDPage();
+        document.addPage(page);
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+        contentStream.beginText();
+        contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+        contentStream.newLineAtOffset(50, 700);
+			
+		ArrayList<String> PDF = new ArrayList<String>();
+		PDF = bd2.consulterEtuParticipe(codeSeance);
+		
+		for(int i=0;i<PDF.size();i++) {
+			String sql="SELECT Status FROM Participer WHERE CodeU=? AND CodeSeance=? ";		
+				try(PreparedStatement st = cx.prepareStatement(sql)) 
+				{
+					st.setString(1, PDF.get(i));
+					st.setString(2, codeSeance);
+					
+					String nomprenom = bd2.consulterNom(Integer.parseInt(PDF.get(i)));
+						try(ResultSet rs=st.executeQuery();){
+							while(rs.next()) {
+								
+				                contentStream.showText("Name: " + nomprenom);
+				                contentStream.newLine();
+				                contentStream.showText("Status: " + rs.getString("Status"));
+				                contentStream.newLine();
+				}
+							contentStream.endText();
+				            contentStream.close();
+				            rs.close();
+				            st.close();					        				            
+			}
+		}
+		catch(SQLException sqle) 
+		{
+			throw new Exception("bd.telechargerPDF() - Erreur au telechargement pdf");		
+		}	
+		
+		}
+		return document;
 	}
 	
 	
