@@ -41,23 +41,12 @@
 
 
 			<div>
-				<h2>Veuillez choisir le mois pour lequel vous voulez consulter
-					vos absences :</h2>
+				
+				
 				<h2>2022</h2>
-				<a href="CtrlFonctionalitesEtu?type_Moi=Septembre" class="button">Septembre</a> <a
-					href="CtrlFonctionalitesEtu?type_Moi=Octobre" class="button">Octobre</a> <a
-					href="CtrlFonctionalitesEtu?type_Moi=Novembre" class="button">Novembre</a>
-
-
-				<a href="CtrlFonctionalitesEtu?type_Moi=Decembre" class="button">Decembre</a> <br>
-
-				<h2>2023</h2>
-				<a href="CtrlFonctionalitesEtu?type_Moi=Janvier" class="button">Janvier</a> <a
-					href="CtrlFonctionalitesEtu?type_Moi=Fevrier" class="button">Fevrier</a> <a
-					href="CtrlFonctionalitesEtu?type_Moi=Mars" class="button">Mars</a> <a
-					href="CtrlFonctionalitesEtu?type_Moi=Avril" class="button">Avril</a> <a
-					href="CtrlFonctionalitesEtu?type_Moi=Mai" class="button">Mai</a> <a
-					href="CtrlFonctionalitesEtu?type_Moi=Juin" class="button">Juin</a>
+				<a href="CtrlFonctionalitesEtu?type_Fonct=abs" class="button">Consulter mes dernieres abscences</a> <a
+					href="CtrlFonctionalitesEtu?type_Fonct=absmois" class="button">Consulter mes abscences par mois</a> 
+					
 			</div>
 
 			<!-- 	<ul> -->

@@ -3,6 +3,7 @@
     <%@page import="metier.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,32 +44,31 @@
 
 			
 				<h2>Abscenses pour le mois de 
-		<%= request.getParameter("type_Moi") %></h2><br>
-		
-		<table border="1">
-		<thead>
-			<tr>
-				<th>Date</th>
+<%-- 		<%= request.getParameter("type_Moi") %> --%>
+		</h2><br>
 			
-			</tr>
-		</thead>
-		<tbody>
+<%-- 			<p><%= session.getAttribute("id") %></p><br> --%>
 		
-			<%
-			List<Object> listeAbs = (List<Object>) request.getAttribute("listeAbs");
-				            for (Object obj : listeAbs) {
-				                    if (obj instanceof Users) {
-				                    	 Seance s = (Seance) obj;
+		
+
+		
+	
+	<ul>
+	
+	<%
+	for (Seance s :(List<Seance>)request.getAttribute("listeAbs") )
+	{
+		out.print("<ul>");
+		out.print("<li>"+s.getDateS()+"</li>");
+		
+		out.print("</ul>");
+	}
+			
 				                    	
-				//                 for (Utilisateurs etudiant : (ArrayList<Utilisateurs>) request.getAttribute("listeAbs"))
-			%>
-			<tr>
-				<td><%= s.getDateS() %></td>
+	%>
 			
-			</tr>
-			<% } }%>
-		</tbody>
-	</table>
+	
+	</ul>
 		
 	
 			

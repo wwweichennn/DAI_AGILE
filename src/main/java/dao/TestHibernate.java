@@ -222,7 +222,7 @@ session.save(s2);
 		u5.participe(s6, "absent");
 		u6.participe(s6, "present");
 		u7.participe(s6, "absent");
-		u8.participe(s6, "absent");
+		u8.participe(s6, "present");
 		
 		u3.participe(s7, "present");
 		u4.participe(s7, "present");
@@ -313,7 +313,11 @@ session.save(s2);
 	
 	  public static List<Seance> listAbsencesEtudiant(String id){
 	    	List<Seance> seances = new ArrayList<>();
-	    	String hql = "select s from Participer p , Seance s, users u where p.seance.idSeance = s.idSeance and p.users.CodeU = :id and p.StatutAppel like 'absent'  and u.CodeU = s.users.CodeU ";
+	    	String hql = "Select s from Participer p, p.seance s, p.users u "
+	    			+ "where p.seance.idSeance = s.idSeance "
+	    			+ "and p.users.CodeU = u.CodeU "
+	    			+ "and p.StatutAppel like 'absent'  "
+	    			+ "and u.CodeU = :id ";
 
 	        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
 	        	Transaction transaction= session.beginTransaction();
@@ -327,7 +331,8 @@ session.save(s2);
 	            e.printStackTrace();
 	        }
 	        
-	        TestHibernate.lire2(seances);
+	        System.out.println(seances.size());
+	       // TestHibernate.lire2(seances);
 	       
 	        return seances;
 	    }
@@ -337,11 +342,11 @@ session.save(s2);
 	public static void main(String[] args) throws ParseException
 		{
 		
-//		TestHibernate.createUsers();
-//		TestHibernate.createCours();
-//		TestHibernate.createSeance();
+	//	TestHibernate.createUsers();
+	//	TestHibernate.createCours();
+	//	TestHibernate.createSeance();
 	//TestHibernate.createParticipe();
-//	TestHibernate.createDeposerJus();
+	//TestHibernate.createDeposerJus();
 	
 		//TestHibernate.loadEtuAbsNonJustifier();
 		//TestHibernate.loadSeancesDonner(1);
@@ -388,9 +393,11 @@ session.save(s2);
 
 	public static void lire2(List l) {
 		for (Object obj : l) {
-			if (obj instanceof Etudiant) {
+			if (obj instanceof Seance) {
 				Seance etudiant = (Seance) obj;
 				System.out.println(etudiant);
+			} else {
+				System.out.println("ddddddddddddddd");
 			}
 		}
 	}

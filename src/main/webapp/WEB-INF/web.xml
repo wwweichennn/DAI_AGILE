@@ -24,10 +24,18 @@
     <servlet-name>emploiDuTemps</servlet-name>
     <jsp-file>/EmploiDuTemps.jsp</jsp-file>
 </servlet>
+<servlet>
+    <servlet-name>mois</servlet-name>
+    <jsp-file>Etudiant/mois.jsp</jsp-file>
+</servlet>
 
 <servlet-mapping>
     <servlet-name>index</servlet-name>
     <url-pattern>/index</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+    <servlet-name>mois</servlet-name>
+    <url-pattern>/mois</url-pattern>
 </servlet-mapping>
 <servlet-mapping>
     <servlet-name>ficheAppel</servlet-name>
