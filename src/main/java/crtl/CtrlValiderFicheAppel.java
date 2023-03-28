@@ -12,9 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Cookie;
 
 import bd.bd2;
 import metier.Etudiant;
+import metier.Seance;
 
 /**
  * Servlet implementation class CtrlEngFicheAppel
@@ -36,28 +38,27 @@ public class CtrlValiderFicheAppel extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-			String[] studentIds = request.getParameterValues("students[]");
-			String seanceId = request.getParameter("seance_id");
-			try {
-				String rs2 = bd2.updateStatusFicheAppel(seanceId);
-				if (studentIds != null) {
-					int i=0;
-					for (String studentId : studentIds) {
-						String rs = bd2.updateStatusEtu(studentId, seanceId);
-						
-						request.setAttribute("id"+i, studentId);
-						i++;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cookie[] cookies=request.getCookies();
+		if(cookies!=null){
+			for(Cookie cookie:cookies) {
+				
+				if(cookie.getName().equals("studentid")) {
+					
+					
+					String etu_id_value=cookie.getValue();
+					String[] etu_id=etu_id_value.split(",");
+					for(String s:etu_id) {
+						System.out.println(s);
 					}
-					request.setAttribute("nb", i);
-					request.getRequestDispatcher("testValider").forward(request, response);
 				}
-
-			} catch (Exception ex) {
-			
 			}
+			
+		}
+	
+					
+		request.getRequestDispatcher("testValider").forward(request, response);
+			
 		}
 	}
 
