@@ -59,7 +59,6 @@ public class CtrlAfficherEtuAbs extends HttpServlet {
 
 	}
 
-
 	/**
 	 * doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

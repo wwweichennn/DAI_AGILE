@@ -5,7 +5,6 @@
  */
 const LOCALES = window.DT_LOCALES;
 
-
 /**
  * Choosen selector. All elements matching it, will be considered as DataTables
  * @type {string}
@@ -404,5 +403,7 @@ class DataTable
 	}
 }
 
+
 document.querySelectorAll(TRIGGER)
 	.forEach(el => new DataTable(el).init());
+	

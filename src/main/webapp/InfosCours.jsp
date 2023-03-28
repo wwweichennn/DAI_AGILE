@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Informations détails d'un cours</title>
 </head>
+
 <body>
 	<!-- menu -->
 	<div class="menu">

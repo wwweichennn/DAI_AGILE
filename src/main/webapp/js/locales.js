@@ -1,5 +1,6 @@
 window.DT_LOCALES = {};
 
+
 window.DT_LOCALES["it"] =
 {
 	SEARCH: "cerca",
