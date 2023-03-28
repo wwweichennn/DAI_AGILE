@@ -1,0 +1,198 @@
+@charset "UTF-8";
+
+body {
+	background-image: url("../img/ut1_arsenal.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/* menu*/
+.menu {
+	height: 60px;
+	margin: auto;
+	border-radius: 10px;
+	background-color: #dc0713;
+	box-shadow: 1px 1px 33px #fff;
+}
+
+.menu ul li {
+	width: 160px;
+	height: 60px;
+	list-style: none; /*去掉圆点*/
+	float: left; /*水平显示*/
+	color: white; /* #fff */
+	font-size: 18px;
+	font-family: Frutiger;
+	text-align: center;
+	line-height: 60px; /* 行高跟 高度一致时，竖直居中*/
+	border-right: 1px solid #f3fae3 /*右边框*/
+}
+
+.menu ul li a {
+	color: white; /* #fff */
+	font-family: Frutiger;
+	text-decoration: none;
+}
+
+.menu ul li.last:hover {
+	border-radius: 0px 10px 10px 0px; /*右上 右下 圆弧显示 */
+}
+
+.menu ul li ul li {
+	border: none;
+	border-top: 2px solid #dc7676bd;
+	background: rgb(237 57 57/ 92%);
+	border-radius: 10px;
+	float: right;
+	width: 160px;
+	height: 45px;
+	line-height: 45px;
+	font-size: 18px;
+	z-index: 999;
+}
+
+.menu ul li ul {
+	display: none; /*不显示*/
+}
+
+.menu ul li:hover ul {
+	display: block;
+}
+
+.menu li:hover {
+	background-color: #ff8c76;
+	color: white;
+	font-size: 19px;
+}
+
+.compte {
+	float: right;
+}
+
+/*image*/
+.logo-ut1 {
+	position: relative;
+	height: 60px;
+	left: -15px;
+	border-radius: 10px;
+}
+
+.container {
+	text-align: center;
+	background-color: white;
+	border-radius: 15px;
+	margin: 40px auto;
+	padding: 40px 10px;
+	width: 50%;
+}
+
+/* Tableau */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1rem;
+}
+
+/* En-tête de colonne */
+th {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 0.5rem;
+}
+
+/* Ligne de corps */
+td {
+	border: 1px solid #ccc;
+	padding: 0.5rem;
+}
+
+/* Boutons */
+.btn_action {
+	display: flex;
+	float: right;
+}
+
+.btn_action button {
+	background-color: red;
+	color: #fff;
+	border: none;
+	border-radius: 0.25rem;
+	padding: 0.5rem;
+	margin-right: 1%;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.btn_action input[type="submit"] {
+	background-color: #2ba8fb;
+	color: #fff;
+	border: none;
+	border-radius: 0.25rem;
+	padding: 0.5rem;
+	  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.btn_action input[type="submit"]:hover {
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px #6fc5ff50;
+}
+
+.btn_action input[type="submit"]:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media only screen and (max-width: 600px) {
+	table {
+		font-size: 0.8rem;
+	}
+	th, td {
+		padding: 0.25rem;
+	}
+}
+
+/* Checkboox */
+.center {
+	position: absolute;
+	width: 100%;
+	transform: translate(-50, -50%);
+	text-align: center;
+}
+
+input[type="checkbox"] {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	-webkit-appearance: none;
+	outline: none;
+	transition: 0.5s;
+}
+
+input[type="checkbox"]:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 3px solid #262626;
+	box-sizing: border-box;
+	transition: 0.5s;
+}
+
+input:checked[type="checkbox"]:before {
+	border-left: none;
+	border-top: none;
+	width: 10px;
+	border-color: rgb(24, 196, 24);
+	transform: rotate(45deg) translate(5px, -10px);
+}

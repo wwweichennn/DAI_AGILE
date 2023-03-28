@@ -42,7 +42,24 @@ public class CtrlAfficherEtuAbs extends HttpServlet {
 		case "0" :
 			try {
 				//Chargement des etudiants concerné dans la Bd
-				List liste = TestHibernate.loadEtuAbsNonJustifier();
+				List liste = TestHibernate.loadJustificatifNonValide();
+				
+
+				//Pour un chainage vers page des IPM 
+				request.setAttribute("listeAbs", liste);
+				request.getRequestDispatcher("Scolarite/VerifJustificatif.jsp").forward(request, response);
+			}
+			catch (ServletException e) {
+				request.setAttribute("msg_erreur", e.getMessage());
+				request.getRequestDispatcher("Accueil").forward(request, response);
+
+			}
+			break;
+			
+		case "1" :
+			try {
+				//Chargement des etudiants concerné dans la Bd
+				List liste = TestHibernate.loadJustificatifNonValide();
 				
 
 				//Pour un chainage vers page des IPM 
@@ -58,7 +75,6 @@ public class CtrlAfficherEtuAbs extends HttpServlet {
 		}
 
 	}
-
 
 	/**
 	 * doPost(HttpServletRequest request, HttpServletResponse response)

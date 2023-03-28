@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Cours par Année_Enseignant</title>
+
 </head>
 <body>
 	<div class="menu">
@@ -32,6 +33,7 @@
 			</li>
 		</ul>
 	</div>
+	
 	<!-- /menu -->
    <h1>Mes cours  2022-2023</h1>
     <div class="wrapper">
@@ -45,11 +47,10 @@
         </div> 
              
 	    <div class="cours">
-	     <ul>
+	     <ul id="nomc">
 	         <li><a href="InfosCours.jsp">Agile</a></li>
 	         <li><a href="">BPMN</a></li>
 	         <li><a href="">Anglais</a></li>
-	         
 	     </ul>
 		</div>
 	</div>

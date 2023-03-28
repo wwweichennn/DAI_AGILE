@@ -1,5 +1,4 @@
 
-
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
@@ -25,12 +24,20 @@
     <jsp-file>/EmploiDuTemps.jsp</jsp-file>
 </servlet>
 <servlet>
-    <servlet-name>testValider</servlet-name>
+<servlet-name>mois</servlet-name>
+    <jsp-file>Etudiant/mois.jsp</jsp-file>
+</servlet>
+<servlet>
+<servlet-name>testValider</servlet-name>
     <jsp-file>/testValider.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
     <servlet-name>index</servlet-name>
     <url-pattern>/index</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+    <servlet-name>mois</servlet-name>
+    <url-pattern>/mois</url-pattern>
 </servlet-mapping>
 <servlet-mapping>
     <servlet-name>ficheAppel</servlet-name>
@@ -138,3 +145,4 @@
 
   
 </web-app>
+

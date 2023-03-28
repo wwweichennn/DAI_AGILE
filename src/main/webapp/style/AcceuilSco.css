@@ -23,7 +23,7 @@ nav #logo {
 
 .container {
 	text-align: center;
-	background-color : white;
+	background-color : rgb(241, 241, 241);
 	border-radius: 15px;
 	margin: 0 auto;
 	padding: 40px 10px ;
@@ -31,6 +31,7 @@ nav #logo {
 	top: 50%;
 	transform: translateY(-50%);
 	width: 50%;
+	display:none;
 }
 
 ul {
@@ -46,16 +47,18 @@ li {
 a {
 	text-decoration: none; 
 	color: inherit; 
-	transition: .8s ease-all;
+	transition: all 1.5s ease-all;
 }
 a:hover {
-	transition: .8s ease-all;
+	transition: all 1s ease-all;
 	font-size: 18px;
 	letter-spacing: 1.2px;
 }
 
 i {
 	float:left;
+	color: #a0deaa;
+	background-color: #a0deaa;
 }
 
 i:hover {
