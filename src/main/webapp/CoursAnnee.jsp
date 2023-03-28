@@ -43,7 +43,7 @@
                 <li semestre='s2'>Semestre 2</li>
             </ul>
         </div> 
-        
+             
 	    <div class="cours">
 	     <ul>
 	         <li><a href="InfosCours.jsp">Agile</a></li>

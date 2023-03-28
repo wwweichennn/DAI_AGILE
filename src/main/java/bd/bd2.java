@@ -327,6 +327,36 @@ public class bd2 {
 		throw new SQLException("Exception bd2.updateStatusEtu() : Problème SQL - " + ex.getMessage());
 		}
 	}
+	
+	
+	public static String afficherCours(String CodeC) throws Exception
+		{
+		/*----- Création éventuelle de la connexion à la base de données -----*/
+		if (bd2.cx == null) {
+			bd2.connection();
+		}
+		/*----- Requête SQL -----*/
+		String sql = "SELECT * FROM Cours WHERE Cour.CodeC = ? ";
+		Cours = null;
+		ArrayList<Cours> listCours= new ArrayList<Cours>();
+		
+		try (PreparedStatement st = cx.prepareStatement(sql)) {
+			st.setString(1, "Cours");
+			for(String code :bd2.consulterSeance(CodeC) ) {
+				st.setString(2, code);
+				try(ResultSet rs = st.executeQuery();){
+					while (rs.next()) {
+						c = new Cours(CodeC, rs.getCursorName());
+						listCours.add(c);
+					}
+				}
+			}
+
+		} catch (SQLException sqle) {
+			throw new Exception("bd.AfficherProfil() - Erreur a l'affiche du profil");
+		}
+		return listCours;
+	}
 
 
 	public static void main(String[] args) throws Exception {
