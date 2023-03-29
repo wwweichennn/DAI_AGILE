@@ -31,7 +31,6 @@
 			</div>
 			</li>
 
-<<<<<<< HEAD
 			<div class="compte">
 				<li><a href="#">Mon Compte</a>
 					<ul>
@@ -42,38 +41,7 @@
 			</li>
 		</ul>
 	</div>
-=======
-	<table border="1">
-		<thead>
-			<tr>
-				<th>Nom</th>
-				<th>Prénom</th>
-				<th>Motif d'absence</th>
-				<th>Valider</th>
-			</tr>
-		</thead>
-		<tbody>
-		
-			<%
-			List<Object> listeAbs = (List<Object>) request.getAttribute("listeAbs");
-				            for (Object obj : listeAbs) {
-				                    if (obj instanceof Users) {
-				                    	 Users etudiant = (Users) obj;
-				                    	
-				//                 for (Utilisateurs etudiant : (ArrayList<Utilisateurs>) request.getAttribute("listeAbs"))
-			%>
-			<tr>
-				<td><%= etudiant.getNom() %></td>
-				<td><%= etudiant.getPrenom() %></td>
-				<td>
-					<%-- <%= etudiant.getJustificatif().getMotif() %> --%>
-				</td>
-				<td><button>Valider</button></td>
-			</tr>
-			<% } }%>
-		</tbody>
-	</table>
->>>>>>> branch 'master' of https://github.com/wwweichennn/DAI_AGILE.git
+
 
 	<div class="container">
 		<h1>
