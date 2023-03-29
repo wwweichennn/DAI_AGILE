@@ -365,7 +365,7 @@ public class TestHibernate
 		String hql = "Select s from Participer p, p.seance s, p.users u "
 				+ "where p.seance.idSeance = s.idSeance "
 				+ "and p.users.CodeU = u.CodeU "
-				+ "and p.StatutAppel like 'absence'  "
+				+ "and p.StatutAppel like 'absent'  "
 				+ "and u.CodeU = :id ";
 
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
