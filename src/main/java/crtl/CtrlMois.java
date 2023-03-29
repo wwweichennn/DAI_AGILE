@@ -46,31 +46,31 @@ public class CtrlMois extends HttpServlet {
 		
 			case "Janvier":
 				url = "AbscencesDuMoi";
-				mois="01";
+				mois="1";
 				break;
 			case "Fevrier":
 				url = "AbscencesDuMoi";
-				mois="02";
+				mois="2";
 				break;
 			case "Mars":
 				url = "AbscencesDuMoi";
-				mois="03";
+				mois="3";
 				break;
 			case "Avril":
 				url = "AbscencesDuMoi";
-				mois="04";
+				mois="4";
 				break;
 			case "Mai":
 				url = "AbscencesDuMoi";
-				mois="05";
+				mois="5";
 				break;
 			case "Juin":
 				url = "AbscencesDuMoi";
-				mois="06";
+				mois="6";
 				break;
 			case "Septembre":
 				url = "AbscencesDuMoi";
-				mois="09";
+				mois="9";
 				break;
 			case "Octobre":
 				url = "AbscencesDuMoi";

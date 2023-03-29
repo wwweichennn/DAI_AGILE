@@ -134,16 +134,16 @@ public class TestHibernate
 			Cours c4 =  session.get(Cours.class, 4);
 			Cours c10 =  session.get(Cours.class, 10);
 
-			Seance s1= new Seance("ME401",DFDATE.parse("28/03/2023"),270,DF.parse("28/03/2023 08:00"),"valide",u1,c4);
+			Seance s1= new Seance("ME401",DFDATE.parse("28/01/2023"),270,DF.parse("28/03/2023 08:00"),"valide",u1,c4);
 			Seance s2= new Seance("MF105",DFDATE.parse("27/03/2023"),180,DF.parse("27/03/2023 14:00"),"enregistrer",u1,c3);
-			Seance s3= new Seance("ME310",DFDATE.parse("28/03/2023"),180,DF.parse("28/03/2023 14:00"),"novalide",u1,c10);
+			Seance s3= new Seance("ME310",DFDATE.parse("28/04/2023"),180,DF.parse("28/03/2023 14:00"),"novalide",u1,c10);
 
-			Seance s4= new Seance("ME410",DFDATE.parse("29/03/2023"),90,DF.parse("29/03/2023 11:00"),"novalide",u1,c3);
+			Seance s4= new Seance("ME410",DFDATE.parse("29/05/2023"),90,DF.parse("29/03/2023 11:00"),"novalide",u1,c3);
 			Seance s5= new Seance("MF103",DFDATE.parse("29/03/2023"),180,DF.parse("29/03/2023 14:00"),"novalide",u1,c3);
 			Seance s6= new Seance("MC405",DFDATE.parse("30/03/2023"),180,DF.parse("30/03/2023 09:30"),"novalide",u1,c1);
 
 
-			Seance s7= new Seance("ME403",DFDATE.parse("31/03/2023"),180,DF.parse("31/03/2023 15:30"),"novalide",u1,c4);
+			Seance s7= new Seance("ME403",DFDATE.parse("31/06/2023"),180,DF.parse("31/03/2023 15:30"),"novalide",u1,c4);
 			Seance s8= new Seance("ME401",DFDATE.parse("28/03/2023"),270,DF.parse("28/03/2023 20:00"),"valide",u2,c4);
 			session.save(s1);
 			session.save(s2);
@@ -186,6 +186,7 @@ public class TestHibernate
 			Seance s5= session.get(Seance.class, 5);
 			Seance s6= session.get(Seance.class, 6);
 			Seance s7= session.get(Seance.class, 7);
+			
 
 
 			u3.participe(s1, "present");
@@ -193,7 +194,7 @@ public class TestHibernate
 			u5.participe(s1, "present");
 			u6.participe(s1, "present");
 			u7.participe(s1, "present");
-			u8.participe(s1, "present");
+			u8.participe(s1, "absent");
 
 			u3.participe(s2, "present");
 			u4.participe(s2, "present");
@@ -207,7 +208,7 @@ public class TestHibernate
 			u5.participe(s3, "present");
 			u6.participe(s3, "present");
 			u7.participe(s3, "present");
-			u8.participe(s3, "present");
+			u8.participe(s3, "absent");
 
 			u3.participe(s4, "present");
 			u4.participe(s4, "present");
@@ -221,14 +222,14 @@ public class TestHibernate
 			u5.participe(s5, "present");
 			u6.participe(s5, "present");
 			u7.participe(s5, "present");
-			u8.participe(s5, "present");
+			u8.participe(s5, "absent");
 
 			u3.participe(s6, "present");
 			u4.participe(s6, "present");
 			u5.participe(s6, "present");
 			u6.participe(s6, "present");
 			u7.participe(s6, "present");
-			u8.participe(s6, "present");
+			u8.participe(s6, "absent");
 
 			u3.participe(s7, "present");
 			u4.participe(s7, "present");
@@ -387,13 +388,17 @@ public class TestHibernate
 	
 	
 	public static List<Seance> listAbsencesEtudiantMois(String id, String mois){
+		System.out.println(mois);
 		List<Seance> seances = new ArrayList<>();
+	
 		String hql = "Select s from Participer p, p.seance s, p.users u "
 				+ "where p.seance.idSeance = s.idSeance "
 				+ "and p.users.CodeU = u.CodeU "
-				+ "and p.StatutAppel like 'absence'  "
-				+ "and s.dateS like '%-:moi-%' "
+				+ "and MONTH(s.dateS) like :moi "
+				+"and p.StatutAppel like 'absent'  "
 				+ "and u.CodeU = :id ";
+		
+		
 
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
 			Transaction transaction= session.beginTransaction();
@@ -408,10 +413,46 @@ public class TestHibernate
 			e.printStackTrace();
 		}
 
+		System.out.println(mois);
 		System.out.println(seances.size());
 		// TestHibernate.lire2(seances);
 
 		return seances;
+	}
+	
+	
+	public static void moi(String mois){
+		
+		List<Seance> seances = new ArrayList<>();
+		
+		String hql = "Select s from Participer p, p.seance s, p.users u "
+				+ "where p.seance.idSeance = s.idSeance "
+				+ "and p.users.CodeU = u.CodeU "
+				+ "and MONTH(s.dateS) like :moi "
+				+"and p.StatutAppel like 'absence'  "
+				+ "and u.CodeU = 8 ";
+				
+		
+		
+
+		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+			Transaction transaction= session.beginTransaction();
+			Query<Seance>query = session.createQuery(hql);
+			//query.setParameter("id", id);
+			query.setParameter("moi", mois);
+			if (!query.getResultList().isEmpty()) {
+				seances=query.list();
+			}
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		//System.out.println(mois);
+		System.out.println(seances.size());
+		// TestHibernate.lire2(seances);
+
+		
 	}
 	/**
 	 * Programme de test.
@@ -419,17 +460,19 @@ public class TestHibernate
 	public static void main(String[] args) throws ParseException
 	{
 
-		//		TestHibernate.createUsers();
-		//		TestHibernate.createCours();
-		//		TestHibernate.createSeance();
-		//	TestHibernate.createParticipe();
-		//		TestHibernate.createDeposerJus();
+//				TestHibernate.createUsers();
+//				TestHibernate.createCours();
+//				TestHibernate.createSeance();
+//			TestHibernate.createParticipe();
+//				TestHibernate.createDeposerJus();
 		//TestHibernate.updateJustificatif(1, false);
 
 
 		//TestHibernate.loadEtuAbsNonJustifier();
 		//TestHibernate.loadSeancesDonner(1);
 		//TestHibernate.listAbsencesEtudiant("8");
+		TestHibernate.listAbsencesEtudiantMois("8","1");
+		//TestHibernate.moi("3");
 	}
 
 	private static void affichage (List l)

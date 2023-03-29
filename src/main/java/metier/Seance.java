@@ -1,5 +1,6 @@
 package metier;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +45,8 @@ public class Seance {
 	
 	@Column(name="StatutFicheAppel")
 	private String StatutFicheAppel;
+	
+	
 	
 
 	//--------participer-----------
@@ -98,6 +101,7 @@ public class Seance {
 	public void setHeureDebut(Date heureDebut) {this.heureDebut = heureDebut;}
 	public String getStatutFicheAppel() {return StatutFicheAppel;}
 	public void setStatutFicheAppel(String statutFicheAppel) {StatutFicheAppel = statutFicheAppel;}
+	
 
 	@Override
 	public int hashCode() {
