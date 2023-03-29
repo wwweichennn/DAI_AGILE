@@ -1,7 +1,4 @@
-var maj_cpt = new Event("majcpt");
-
 function valider(){
-    // 获取学生列表元素
 		    var nb = document.getElementById("nb").innerHTML;
 		    var seanceID = document.getElementById("id").innerHTML;
 		    var studentItems = [];
@@ -25,28 +22,29 @@ function valider(){
 		        formData.append('students[]', students[j]);
 		    }
 		    formData.append('seance_id', seanceID);
-
-		    // 发送表单数据到Servlet
-		    var xhr = new XMLHttpRequest();
-		    xhr.open('POST', 'CtrlActionFicheAppel');
 		    
+		    var xhr = new XMLHttpRequest();
+		    xhr.open('POST', 'CtrlValiderFicheAppel', true);
+
 	// On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
 	xhr.onload = function()
 		{
 		// Si la requête http s'est bien passée.
 		if (xhr.status === 200)
 			{
-				var btnValider=document.getElementById("btnValider");
-			    btnValider.disabled = "disabled";
-				
-					}
+		
+			var l_ids = xhr.responseXML.getElementsByTagName("id");
+			var l_seanceids = xhr.responseXML.getElementsByTagName("seanceid");
+			
+			var test=document.getElementById("test");
+					test.innnerHTML=l_seanceids[0].firstChild.nodeValue
 				}
 			
 	// Envoi de la requête.
-	 xhr.send(formData);
+	xhr.send(formData);
 	
 }
-
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 
