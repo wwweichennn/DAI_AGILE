@@ -122,8 +122,8 @@ public class TestHibernate
 			/*----- Ouverture d'une transaction -----*/
 			Transaction t = session.beginTransaction();
 
-			/*----- Ouverture d'une transaction -----*/
-			Transaction t = session.beginTransaction();
+		
+	
 
 			Users u1 =  session.get(Users.class, 1);
 			Users u2 =  session.get(Users.class, 2);
@@ -142,12 +142,6 @@ public class TestHibernate
 			Seance s5= new Seance("MF103",DFDATE.parse("29/03/2023"),180,DF.parse("29/03/2023 14:00"),"novalide",u1,c3);
 			Seance s6= new Seance("MC405",DFDATE.parse("30/03/2023"),180,DF.parse("30/03/2023 09:30"),"novalide",u1,c1);
 
-			Users u1 =  session.get(Users.class, 1);
-			Cours c1 =  session.get(Cours.class, 1);
-			Cours c2 =  session.get(Cours.class, 2);
-			Cours c3 =  session.get(Cours.class, 3);
-			Cours c4 =  session.get(Cours.class, 4);
-			Cours c10 =  session.get(Cours.class, 10);
 
 			Seance s7= new Seance("ME403",DFDATE.parse("31/03/2023"),180,DF.parse("31/03/2023 15:30"),"novalide",u1,c4);
 			Seance s8= new Seance("ME401",DFDATE.parse("28/03/2023"),270,DF.parse("28/03/2023 20:00"),"valide",u2,c4);
@@ -160,25 +154,7 @@ public class TestHibernate
 			session.save(s7);
 
 			session.save(s8);
-			>>>>>>> branch 'master' of https://github.com/wwweichennn/DAI_AGILE.git
-
-				Seance s1= new Seance("ME401",DFDATE.parse("28/03/2023"),270,DF.parse("28/03/2023 08:00"),"valide",u1,c4);
-			Seance s2= new Seance("MF105",DFDATE.parse("27/03/2023"),180,DF.parse("27/03/2023 14:00"),"enregistrer",u1,c3);
-			Seance s3= new Seance("ME310",DFDATE.parse("28/03/2023"),180,DF.parse("28/03/2023 14:00"),"novalide",u1,c10);
-
-			Seance s4= new Seance("ME410",DFDATE.parse("29/03/2023"),90,DF.parse("29/03/2023 11:00"),"novalide",u1,c3);
-			Seance s5= new Seance("MF103",DFDATE.parse("29/03/2023"),180,DF.parse("29/03/2023 14:00"),"novalide",u1,c3);
-			Seance s6= new Seance("MC405",DFDATE.parse("30/03/2023"),180,DF.parse("30/03/2023 09:30"),"novalide",u1,c1);
-
-			Seance s7= new Seance("ME403",DFDATE.parse("31/03/2023"),180,DF.parse("31/03/2023 15:30"),"novalide",u1,c4);
-
-			session.save(s1);
-			session.save(s2);
-			session.save(s3);
-			session.save(s4);
-			session.save(s5);
-			session.save(s6);
-			session.save(s7);
+			
 
 
 			t.commit();
@@ -224,7 +200,7 @@ public class TestHibernate
 			u5.participe(s2, "present");
 			u6.participe(s2, "present");
 			u7.participe(s2, "present");
-			u8.participe(s2, "present");
+			u8.participe(s2, "absent");
 
 			u3.participe(s3, "present");
 			u4.participe(s3, "present");
@@ -238,7 +214,7 @@ public class TestHibernate
 			u5.participe(s4, "present");
 			u6.participe(s4, "present");
 			u7.participe(s4, "present");
-			u8.participe(s4, "present");
+			u8.participe(s4, "absent");
 
 			u3.participe(s5, "present");
 			u4.participe(s5, "present");
@@ -351,15 +327,37 @@ public class TestHibernate
 			Transaction t = session.beginTransaction(); 
 
 
-			Justificatif j1 = session.get(Justificatif.class, justificatifId);	//Recupère le justificatif
+			Justificatif j1 = session.get(Justificatif.class, justificatifId);	//Recupï¿½re le justificatif
 
 			j1.setValidation(validation);	//change sa validation
-			session.update(j1);				//Met à jour
+			session.update(j1);				//Met ï¿½ jour
 
 			t.commit();
 			session.close();
 		}
 	}
+	
+	public static void createJustFromFile(int idUser, String justificatif) {
+		/*----- Ouverture de la session -----*/
+		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
+		{
+			/*----- Ouverture d'une transaction -----*/
+			Transaction t = session.beginTransaction(); 
+			Users u =  session.get(Users.class, idUser);
+			
+
+
+			Justificatif j1 = new Justificatif();
+			j1.setUrl(justificatif);
+			j1.setUsersJustificatif(u);
+		
+			session.save(j1);				
+
+			t.commit();
+			session.close();
+		}
+	}
+
 
 	public static List<Seance> listAbsencesEtudiant(String id){
 		List<Seance> seances = new ArrayList<>();
@@ -395,7 +393,7 @@ public class TestHibernate
 		//		TestHibernate.createUsers();
 		//		TestHibernate.createCours();
 		//		TestHibernate.createSeance();
-		//		TestHibernate.createParticipe();
+		//	TestHibernate.createParticipe();
 		//		TestHibernate.createDeposerJus();
 		//TestHibernate.updateJustificatif(1, false);
 

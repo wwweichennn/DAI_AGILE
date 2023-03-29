@@ -43,33 +43,50 @@
 
 
 			
-				<h2>Abscenses pour le mois de 
+				<h3>Dernieres abscences </h3><br>
 <%-- 		<%= request.getParameter("type_Moi") %> --%>
-		</h2><br>
+		
 			
 <%-- 			<p><%= session.getAttribute("id") %></p><br> --%>
 		
 		
 
 		
-	
-	<ul>
-	
+	<table style="width:100%" border="1">
+  <tr>
+    <th>Date</th>
+    <th>Heure</th>
+    <th>Cours</th>
+   	<th>Justificatif</th>
+
+  </tr>
+  <form action ="AjouterJust" method="post" ">
+
+<!-- 	enctype="multipart/form-data -->
 	<%
+	
 	for (Seance s :(List<Seance>)request.getAttribute("listeAbs") )
 	{
-		out.print("<ul>");
-		out.print("<li>"+s.getDateS()+"</li>");
-		
-		out.print("</ul>");
+		out.print("<tr>");
+		out.print("<td>"+s.getDateS()+"</td>");
+		out.print("<td>"+s.getHeureDebut()+"</td>");
+		out.print("<td>"+s.getCours().getNomCours()+"</td>");
+// 		out.print("<td> <label for='file'>SELECT</label> <input type='file' id='file' name='file' multiple /></td>");
+		out.print("<td><input type='text' id='file' name='file'></input></td>");
+
+		out.println("</tr>");
+				
 	}
-			
+	List<Object> files = new ArrayList<>();
 				                    	
 	%>
 			
 	
-	</ul>
+
+		</table >
 		
+		 <button>Submit</button>
+		 </form>
 	
 			
 
