@@ -364,13 +364,42 @@ public class TestHibernate
 		String hql = "Select s from Participer p, p.seance s, p.users u "
 				+ "where p.seance.idSeance = s.idSeance "
 				+ "and p.users.CodeU = u.CodeU "
-				+ "and p.StatutAppel like 'absent'  "
+				+ "and p.StatutAppel like 'absence'  "
 				+ "and u.CodeU = :id ";
 
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
 			Transaction transaction= session.beginTransaction();
 			Query<Seance>query = session.createQuery(hql);
 			query.setParameter("id", id);
+			if (!query.getResultList().isEmpty()) {
+				seances=query.list();
+			}
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(seances.size());
+		// TestHibernate.lire2(seances);
+
+		return seances;
+	}
+	
+	
+	public static List<Seance> listAbsencesEtudiantMois(String id, String mois){
+		List<Seance> seances = new ArrayList<>();
+		String hql = "Select s from Participer p, p.seance s, p.users u "
+				+ "where p.seance.idSeance = s.idSeance "
+				+ "and p.users.CodeU = u.CodeU "
+				+ "and p.StatutAppel like 'absence'  "
+				+ "and s.dateS like '%-:moi-%' "
+				+ "and u.CodeU = :id ";
+
+		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+			Transaction transaction= session.beginTransaction();
+			Query<Seance>query = session.createQuery(hql);
+			query.setParameter("id", id);
+			query.setParameter("moi", mois);
 			if (!query.getResultList().isEmpty()) {
 				seances=query.list();
 			}

@@ -28,6 +28,7 @@ public class CtrlMois extends HttpServlet {
 	//int id = (int) request.getAttribute("id");
 	String action = request.getParameter("type_Moi");
 	String url;
+	String mois = null;
 	
 
 
@@ -42,48 +43,55 @@ public class CtrlMois extends HttpServlet {
 
 		switch (action)
 			{
-			case "Modif":
-				url = "ModifProfil";
-				break;
-
+		
 			case "Janvier":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="01";
 				break;
 			case "Fevrier":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="02";
 				break;
 			case "Mars":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="03";
 				break;
 			case "Avril":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="04";
 				break;
 			case "Mai":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="05";
 				break;
 			case "Juin":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="06";
 				break;
 			case "Septembre":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="09";
 				break;
 			case "Octobre":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="10";
 				break;
 			case "Novembre":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="11";
 				break;
 			case "Decembre":
-				url = "absparmois";
+				url = "AbscencesDuMoi";
+				mois="12";
 				break;
 
 			default:
-				url = "absparmois";
+				url = "AbscencesDuMoi";
 			}
 		
 		}
 	
-	List<Seance> liste = TestHibernate.listAbsencesEtudiant(id);
+	List<Seance> liste = TestHibernate.listAbsencesEtudiantMois(id,mois);
 	
 
 	//Pour un chainage vers page des IPM 
@@ -93,7 +101,7 @@ public class CtrlMois extends HttpServlet {
 	// Chainage.
 	request.setAttribute("identifiant", id);
 	request.setAttribute("Mois", action);
-	request.getRequestDispatcher("AcceuilEtudiant").forward(request, response);
+	request.getRequestDispatcher(url).forward(request, response);
 	}
 
 

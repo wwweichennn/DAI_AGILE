@@ -41,11 +41,16 @@
 
 
 			<div>
+				<h2>Bienvenue de nouveau, ${requestScope.nom}</h2>
 				
+					 
+					    <a href="CtrlFonctionalitesEtu?type_Fonct=abs" class="button">Consulter mes dernieres abscences</a><br>
+					    <a href="CtrlFonctionalitesEtu?type_Fonct=absmois" class="button">Consulter mes abscences par mois</a><br>
+					    <a href="CtrlFonctionalitesEtu?type_Fonct=mess" class="button">Messagerie</a><br>
+					
 				
-				<h2>2022</h2>
-				<a href="CtrlFonctionalitesEtu?type_Fonct=abs" class="button">Consulter mes dernieres abscences</a> <a
-					href="CtrlFonctionalitesEtu?type_Fonct=absmois" class="button">Consulter mes abscences par mois</a> 
+			
+				
 					
 			</div>
 

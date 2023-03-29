@@ -55,12 +55,12 @@ public class CtrlFonctionalitesEtu extends HttpServlet {
 				break;
 
 			case "absmois":
-				url = "mois";
+				url = "CalMois";
 				break;
 		
 
 			default:
-				url = "absparmois";
+				url = "AcceuilEtudiant";
 			}
 		
 		}

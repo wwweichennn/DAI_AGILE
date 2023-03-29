@@ -80,6 +80,11 @@
 
 
 
+
+	<servlet>
+		<servlet-name>CalMois</servlet-name>
+		<jsp-file>/Etudiant/CalMois.jsp</jsp-file>
+	</servlet>
 	<servlet>
 		<servlet-name>verifJustif</servlet-name>
 		<jsp-file>/Scolarite/VerifJustificatif.jsp</jsp-file>
@@ -98,6 +103,14 @@
 		<jsp-file>/Etudiant/absparmois.jsp</jsp-file>
 	
 	</servlet>
+	
+	
+	
+		<servlet>
+		<servlet-name>AbscencesDuMoi</servlet-name>
+		<jsp-file>/Etudiant/AbscencesDuMoi.jsp</jsp-file>
+	
+	</servlet>
 
 	<!-- Donner un alias -->
 	<servlet-mapping>
@@ -107,6 +120,11 @@
 	<servlet-mapping>
 		<servlet-name>AcceuilEtudiant</servlet-name>
 		<url-pattern>/AcceuilEtudiant</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>AbscencesDuMoi</servlet-name>
+		<url-pattern>/AbscencesDuMoi</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
@@ -124,6 +142,10 @@
 	<servlet-mapping>
 		<servlet-name>absparmois</servlet-name>
 		<url-pattern>/absparmois</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CalMois</servlet-name>
+		<url-pattern>/CalMois</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

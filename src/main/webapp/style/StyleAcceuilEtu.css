@@ -182,6 +182,8 @@ body {
 	margin: 0;
 	height: 100%;
 }
+
+
 .button {
 	background-color: #DC143C;
 	border: none;
@@ -194,12 +196,15 @@ body {
 	margin: 4px 2px;
 	cursor: pointer;
 	 border-radius: 12px;
+	 
 }
 .button:hover {
   background: #fff;
   color: #d90429;
 
   border-color: #DC143C;
+  
+
 }
 .content {
 	  display: flex;
