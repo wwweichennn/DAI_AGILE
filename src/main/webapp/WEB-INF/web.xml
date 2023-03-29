@@ -58,6 +58,10 @@
     <jsp-file>/res.jsp</jsp-file>
 </servlet>
 
+
+
+
+
 <servlet-mapping>
     <servlet-name>res</servlet-name>
     <url-pattern>/res</url-pattern>
@@ -72,6 +76,9 @@
 		<servlet-name>AcceuilEtudiant</servlet-name>
 		<jsp-file>/Etudiant/AcceuilEtudiant.jsp</jsp-file>
 	</servlet>
+
+
+
 
 	<servlet>
 		<servlet-name>verifJustif</servlet-name>
@@ -89,6 +96,7 @@
 	<servlet>
 		<servlet-name>absparmois</servlet-name>
 		<jsp-file>/Etudiant/absparmois.jsp</jsp-file>
+	
 	</servlet>
 
 	<!-- Donner un alias -->

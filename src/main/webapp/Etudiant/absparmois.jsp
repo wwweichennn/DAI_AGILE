@@ -60,7 +60,7 @@
    	<th>Justificatif</th>
 
   </tr>
-  <form action ="AjouterJust" method="post" ">
+  <form action ="AjouterJust" method="post" enctype="multipart/form-data">
 
 <!-- 	enctype="multipart/form-data -->
 	<%
@@ -71,9 +71,7 @@
 		out.print("<td>"+s.getDateS()+"</td>");
 		out.print("<td>"+s.getHeureDebut()+"</td>");
 		out.print("<td>"+s.getCours().getNomCours()+"</td>");
-// 		out.print("<td> <label for='file'>SELECT</label> <input type='file' id='file' name='file' multiple /></td>");
-		out.print("<td><input type='text' id='file' name='file'></input></td>");
-
+		out.print("<td> <label for='file'>SELECT</label> <input type='file' name='file' /></td>");
 		out.println("</tr>");
 				
 	}
@@ -85,7 +83,7 @@
 
 		</table >
 		
-		 <button>Submit</button>
+		 <input type="submit" value="Upload">
 		 </form>
 	
 			
