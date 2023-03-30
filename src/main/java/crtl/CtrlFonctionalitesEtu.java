@@ -33,6 +33,7 @@ public class CtrlFonctionalitesEtu extends HttpServlet {
 	javax.servlet.http.HttpSession session = request.getSession();
 	
 	String id = session.getAttribute("id").toString();
+	String nom = (String) session.getAttribute("nom");
 	//int id = (int) request.getAttribute("id");
 	String action = request.getParameter("type_Fonct");
 	String url;
@@ -57,6 +58,10 @@ public class CtrlFonctionalitesEtu extends HttpServlet {
 			case "absmois":
 				url = "CalMois";
 				break;
+			case "Retour":
+				url = "AcceuilEtudiant";
+				break;
+		
 		
 
 			default:
@@ -75,6 +80,7 @@ public class CtrlFonctionalitesEtu extends HttpServlet {
 	// Chainage.
 	request.setAttribute("identifiant", id);
 	request.setAttribute("Mois", action);
+	request.setAttribute("nom", nom);
 	request.getRequestDispatcher(url).forward(request, response);
 	}
 

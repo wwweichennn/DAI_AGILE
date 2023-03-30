@@ -73,6 +73,7 @@ public class centrale extends HttpServlet {
 						request.getRequestDispatcher("Accueil").forward(request, response);
 					}
 					else if(bd2.consulterType(CodeU).equals("Etudiant")){
+						session.setAttribute("nom", bd2.consulterNom(CodeU));
 						request.setAttribute("nom", bd2.consulterNom(CodeU));
 						//request.setAttribute("id", CodeU);
 						session.setAttribute("id", CodeU);

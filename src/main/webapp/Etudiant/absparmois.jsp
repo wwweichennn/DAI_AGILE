@@ -20,7 +20,7 @@
 		<ul>
 			<li><img src="img/logo-ut1.png" class="logo-ut1" /></li>
 			<div class="accueil">
-				<li><a href="webapp.AcceuilEtudiant">Accueil</a>
+				<li><a href="CtrlFonctionalitesEtu">Accueil</a>
 			</div>
 			</li>
 			
@@ -85,6 +85,8 @@
 		
 		 <input type="submit" value="Upload">
 		 </form>
+		 
+		 <button ><a href="CtrlFonctionalitesEtu?type_Fonct=Retour" >Retour</a></button>
 	
 			
 

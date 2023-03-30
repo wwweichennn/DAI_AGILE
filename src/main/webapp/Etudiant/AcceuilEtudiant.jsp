@@ -18,7 +18,7 @@
 		<ul>
 			<li><img src="img/logo-ut1.png" class="logo-ut1" /></li>
 			<div class="accueil">
-				<li><a href="webapp.AcceuilEtudiant">Accueil</a>
+				<li><a href="CtrlFonctionalitesEtu">Accueil</a>
 			</div>
 			</li>
 			
@@ -49,17 +49,21 @@
 					    <a href="CtrlFonctionalitesEtu?type_Fonct=mess" class="button">Messagerie</a><br>
 					
 				
-			
+			<p >${msg_info}</p>
 				
 					
 			</div>
+			
 
 			<!-- 	<ul> -->
 
 			<!-- 				<li><a href="CtrlFonctionalitesEtu?type_action=Fonct">Consulter mes absences </a></li> -->
-			<!-- 			</ul> -->
+			<!-- 	
+					</ul> -->
+					
 		</div>
-	</div>
+		
+	
 
 
 </body>

@@ -96,6 +96,26 @@ a{
 	color:#55232d;
  }
  
+ table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1rem;
+}
+
+/* En-tête de colonne */
+th {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 0.5rem;
+}
+
+/* Ligne de corps */
+td {
+	border: 1px solid #ccc;
+	padding: 0.5rem;
+}
+ 
  /* menu*/
 .menu{  
 	height: 60px;
