@@ -19,20 +19,20 @@ public class CtrlUpdateJustificatif extends HttpServlet {
 	 * doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Récupérer les paramètres checker et les mettre dans une session
+		//Rï¿½cupï¿½rer les paramï¿½tres checker et les mettre dans une session
 		String [] idChecked = request.getParameterValues("justifId");
 
 		HttpSession session = request.getSession(true);
 
 		session.setAttribute("idChecked", idChecked);
 
-		//Vérifier si nul
+		//Vï¿½rifier si nul
 		String erreur="";
 		String info ="";
 		if(idChecked == null) {
-			erreur = "Vous n'avez pas coché de case";
+			erreur = "Vous n'avez pas coche de case";
 
-			//Chainage vers la page de vérification
+			//Chainage vers la page de vï¿½rification
 			request.setAttribute("msg_erreur", erreur);
 			request.getRequestDispatcher("Scolarite/VerifJustificatif.jsp").forward(request, response);
 		}
@@ -45,9 +45,9 @@ public class CtrlUpdateJustificatif extends HttpServlet {
 				}
 
 				//Si OK
-				info = "Justificatif validé";
+				info = "Justificatif valide";
 				request.setAttribute("msg_conf", info);
-				request.getRequestDispatcher("Scolaraite/AcceuilScolarite.jsp").forward(request, response);
+				request.getRequestDispatcher("Scolarite/AcceuilScolarite.jsp").forward(request, response);
 
 			} //Si KO
 			catch(Exception ex) {

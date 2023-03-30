@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.annotation.MultipartConfig;
@@ -33,6 +34,7 @@ import metier.Users;
 	    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 	    maxFileSize = 1024 * 1024 * 10, // 10MB
 	    maxRequestSize = 1024 * 1024 * 50
+	  
 	)
 public class CtrlAjouterJust extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -77,6 +79,8 @@ public class CtrlAjouterJust extends HttpServlet {
         Part filePart = request.getPart("file");
         String fileName = filePart.getSubmittedFileName();
         String filePath = UPLOAD_DIR + File.separator + fileName;
+        		
+        		//UPLOAD_DIR + File.separator + fileName;
 
         // 将上传的文件保存到指定的目录
         InputStream inputStream = filePart.getInputStream();
@@ -110,6 +114,7 @@ public class CtrlAjouterJust extends HttpServlet {
 
 		
 		request.getRequestDispatcher("AcceuilEtudiant").forward(request,response);
+		
 	}
 
 }

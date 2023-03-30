@@ -24,7 +24,6 @@
 				<li><a href="CtrlAfficherEtuAbs?type_promo=IPM">IPM </a></li>
 				<li><a href="CtrlAfficherEtuAbs?type_promo=ISIAD">ISIAD </a></li>
 			</ul>
-			<i style="font-size:24px" class="fa">&#xf0e0; !</i>
 			<div>${requestScope.msg_conf}</div>
 			<div>${requestScope.msg_erreur }</div>
 		</div>

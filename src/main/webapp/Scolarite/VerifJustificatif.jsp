@@ -86,7 +86,7 @@
 					<tr>
 						<td><%=justificatif.getUsersJustificatif().getNom()%></td>
 						<td><%=justificatif.getUsersJustificatif().getPrenom()%></td>
-						<td><%=justificatif.getUrl()%></td>
+						<td><%out.print("<a style='color:black' href='" + justificatif.getUrl() + "'>Justificatif");%></td>
 						<td>
 							<%
 							out.println("<input type='checkbox' name='justifId' value='" + justificatif.getCodeJust() + "' "

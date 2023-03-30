@@ -46,7 +46,7 @@
 					 
 					    <a href="CtrlFonctionalitesEtu?type_Fonct=abs" class="button">Consulter mes dernieres abscences</a><br>
 					    <a href="CtrlFonctionalitesEtu?type_Fonct=absmois" class="button">Consulter mes abscences par mois</a><br>
-					    <a href="CtrlFonctionalitesEtu?type_Fonct=mess" class="button">Messagerie</a><br>
+			
 					
 				
 			<p >${msg_info}</p>

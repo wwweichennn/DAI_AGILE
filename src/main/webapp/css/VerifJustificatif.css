@@ -128,6 +128,10 @@ a {
 	text-decoration: none;
 }
 
+a #link {
+	color : black;
+}
+
 .btn_action input[type="submit"] {
 	background-color: #2ba8fb;
 	color: #fff;
