@@ -60,7 +60,7 @@
    	<th>Justificatif</th>
 
   </tr>
-  <form action ="AjouterJust" method="post" enctype="multipart/form-data">
+  <form action ="CtrlAjouterJust" method="post" enctype="multipart/form-data">
 
 <!-- 	enctype="multipart/form-data -->
 	<%
